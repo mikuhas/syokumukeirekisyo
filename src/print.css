@@ -1,0 +1,30 @@
+
+@media print {
+  /* Hide all UI elements except the resume preview */
+  header, .form-sidebar, .sidebar-actions, .sidebar-menu, .editor-tabs, .form-sidebar, .form-content-area, .controls {
+    display: none !important;
+  }
+  
+  body, .container, main {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .resume-preview {
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+  
+  /* Prevent page breaks inside project tables */
+  .project-table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
