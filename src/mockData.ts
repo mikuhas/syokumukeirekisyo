@@ -9,14 +9,9 @@ export const mockResume: Resume = {
     ],
     summary: '10年以上の経験を持つシニアソフトウェアエンジニア。主にReactとNode.jsを使用したWebアプリケーション開発に従事。',
     selfPromotion: '技術選定からアーキテクチャ設計、チームマネジメントまで幅広く対応可能です。特にパフォーマンス最適化と、保守性の高いコードベースの構築に強みを持っています。新しい技術のキャッチアップも早く、チームの生産性向上に貢献できます。',
-    skillStack: {
-      '言語': ['TypeScript', 'Go', 'Python', 'Java'],
-      'フレームワーク': ['React', 'Next.js', 'Gin', 'Spring Boot'],
-      'インフラ': ['AWS', 'Kubernetes', 'Docker', 'Terraform'],
-      'DB': ['PostgreSQL', 'MySQL', 'Redis', 'DynamoDB']
-    },
     certifications: ['AWS Certified Solutions Architect', '応用情報技術者']
-  },
+    },
+
   workExperiences: [
     {
       company: '株式会社テックイノベーション',
@@ -40,7 +35,13 @@ export const mockResume: Resume = {
           techStack: {
             '言語・フレームワーク': [
               { name: 'Go', version: '1.20' },
-              { name: 'TypeScript', version: '5.0' }
+              { name: 'Node.js' },
+              { name: 'jQuery' },
+              { name: 'TypeScript', version: '5.0' },
+              { name: 'Spring Boot' },
+              { name: 'JPA' },
+              { name: 'MyBatis' },
+              { name: 'Echo' }
             ],
             'インフラ・クラウド': [
               { name: 'Kubernetes', version: '1.25' },
@@ -49,7 +50,10 @@ export const mockResume: Resume = {
             'データベース・ミドルウェア': [
               { name: 'PostgreSQL', version: '15' },
               { name: 'Redis' },
-              { name: 'gRPC' }
+              { name: 'gRPC' },
+              { name: 'Flyway' },
+              { name: 'Firestore' },
+              { name: 'REST API' }
             ]
           }
         }

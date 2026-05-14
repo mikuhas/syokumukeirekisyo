@@ -12,7 +12,7 @@ export const Profile: React.FC<ProfileProps> = ({ data }) => {
   return (
     <section className="profile-section">
       <div className="resume-title-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '20px' }}>
-        <h1 style={{ fontSize: '2rem', margin: 0 }}>職務経歴書</h1>
+        <h1 style={{ fontSize: '1.8rem', margin: 0, color: '#162333', letterSpacing: '0.1em' }}>職務経歴書</h1>
         <div style={{ textAlign: 'right', fontSize: '0.9rem' }}>
           <div style={{ fontWeight: 'bold' }}>{data.name}</div>
           <div>更新日: {today}</div>
@@ -36,14 +36,14 @@ export const Profile: React.FC<ProfileProps> = ({ data }) => {
 
       <div className="profile-grid">
         <div className="summary-box">
-          <h2><span style={{ fontSize: '0.8em', marginRight: '5px' }}>■</span>職務要約</h2>
+          <h2>■ 職務要約</h2>
           <p>{data.summary}</p>
         </div>
       </div>
 
       {data.certifications && data.certifications.length > 0 && (
         <div className="certifications">
-          <h2><span style={{ fontSize: '0.8em', marginRight: '5px' }}>■</span>資格</h2>
+          <h2>■ 資格</h2>
           <div className="cert-tags">
             {data.certifications.map((cert, idx) => (
               <span key={idx} className="cert-tag">{cert}</span>

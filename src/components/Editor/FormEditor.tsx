@@ -13,7 +13,6 @@ import {
   Award,
   Link as LinkIcon,
   Briefcase,
-  Cpu,
 } from "lucide-react";
 import yaml from "js-yaml";
 import { PREDEFINED_TECH_STACK } from '../../constants/techStack';
@@ -23,7 +22,7 @@ interface FormEditorProps {
   onChange: (newData: Resume) => void;
 }
 
-type Section = "basic" | "skills" | "links" | "experience";
+type Section = "basic" | "links" | "experience";
 
 export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
   const [activeSection, setActiveSection] = useState<Section>("basic");
@@ -84,7 +83,6 @@ export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
 
   const menuItems = [
     { id: "basic", label: "基本情報", icon: User },
-    { id: "skills", label: "スキルスタック", icon: Cpu },
     { id: "links", label: "リンク・資格", icon: LinkIcon },
     { id: "experience", label: "職務経歴", icon: Briefcase },
   ];
@@ -93,17 +91,6 @@ export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
     <div className="form-editor-container">
       <aside className="form-sidebar">
         <div className="sidebar-menu">
-          {/* 文書全体目次 */}
-          <div style={{ padding: '10px 20px', fontSize: '0.85rem', color: '#6b7280', borderBottom: '1px solid #eee' }}>
-            <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>目次</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-              <a href="#basic-info" style={{ color: '#2d3748', textDecoration: 'none' }}>基本情報</a>
-              <a href="#work-experience" style={{ color: '#2d3748', textDecoration: 'none' }}>職務経歴</a>
-              <a href="#skill-stack" style={{ color: '#2d3748', textDecoration: 'none' }}>スキルスタック</a>
-              <a href="#self-promotion" style={{ color: '#2d3748', textDecoration: 'none' }}>自己PR</a>
-            </div>
-          </div>
-
           {menuItems.map((item) => (
             <Button
               key={item.id}
@@ -185,20 +172,6 @@ export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
                 />
               </div>
             </div>
-          </section>
-        )}
-
-        {activeSection === "skills" && (
-          <section className="form-card">
-            <div className="card-header">
-              <Cpu size={20} />
-              <h3>スキルスタック (全体)</h3>
-            </div>
-            <SkillStackEditor
-              path="profile.skillStack"
-              watch={watch}
-              setValue={setValue}
-            />
           </section>
         )}
 

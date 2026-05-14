@@ -41,7 +41,6 @@ export const ProfileSchema = z.object({
   })).optional(),
   summary: z.string().min(1, 'Summary is required'),
   selfPromotion: z.string().min(1, 'Self promotion is required'),
-  skillStack: z.record(z.string(), z.array(z.string())).optional(),
   certifications: z.array(z.string()).optional(),
 });
 

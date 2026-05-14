@@ -1,7 +1,7 @@
 
 @media print {
   /* Hide all UI elements except the resume preview */
-  header, .form-sidebar, .sidebar-actions, .sidebar-menu, .editor-tabs, .form-sidebar, .form-content-area, .controls {
+  header, .form-sidebar, .sidebar-actions, .sidebar-menu, .editor-tabs, .form-sidebar, .form-content-area, .controls, .no-print {
     display: none !important;
   }
   
@@ -22,9 +22,33 @@
     display: block !important;
   }
   
+  /* Keep section headings with following content */
+  h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Keep experience company header with its projects */
+  .experience-table {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   /* Prevent page breaks inside project tables */
   .project-table {
-    page-break-inside: avoid;
     break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Prevent widows and orphans in text blocks */
+  p, li, div {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Keep skill stack rows together */
+  .tech-category-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }

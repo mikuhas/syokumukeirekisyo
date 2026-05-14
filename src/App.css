@@ -47,7 +47,7 @@ header {
   width: 240px;
   flex-shrink: 0;
   position: sticky;
-  top: 2rem;
+  top: 7rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -446,6 +446,18 @@ header {
   font-weight: 700;
   font-size: 1.1rem;
   color: #111827;
+}
+
+.resume-preview h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #162333;
+  border-left: 4px solid #162333;
+  padding: 2px 0 2px 8px;
+  margin-bottom: 14px;
+  margin-top: 0;
+  letter-spacing: 0.05em;
+  background: none;
 }
 
 .tech-category-row{
