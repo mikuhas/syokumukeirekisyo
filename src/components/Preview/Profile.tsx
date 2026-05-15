@@ -25,9 +25,8 @@ export const Profile: React.FC<ProfileProps> = ({ data }) => {
             {data.links.map((link, idx) => (
               <div key={idx} className="contact-item">
                 <LinkIcon size={14} />
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                </a>
+                <span className="link-label">{link.label}:</span>
+                <span className="link-url">{link.url}</span>
               </div>
             ))}
           </div>
@@ -36,19 +35,19 @@ export const Profile: React.FC<ProfileProps> = ({ data }) => {
 
       <div className="profile-grid">
         <div className="summary-box">
-          <h2>■ 職務要約</h2>
+          <h2>職務要約</h2>
           <p>{data.summary}</p>
         </div>
       </div>
 
       {data.certifications && data.certifications.length > 0 && (
         <div className="certifications">
-          <h2>■ 資格</h2>
-          <div className="cert-tags">
+          <h2>資格</h2>
+          <ul className="cert-list">
             {data.certifications.map((cert, idx) => (
-              <span key={idx} className="cert-tag">{cert}</span>
+              <li key={idx}>{cert}</li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
     </section>

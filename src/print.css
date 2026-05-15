@@ -51,4 +51,10 @@
     break-inside: avoid;
     page-break-inside: avoid;
   }
+
+  /* Prevent "以上" from appearing alone on a new page */
+  .resume-end {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
 }

@@ -114,7 +114,11 @@ export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
                   {(watch(`workExperiences.${expIdx}.projects`) || []).map((proj: any, projIdx: number) => (
                     <div key={projIdx} style={{ paddingLeft: '10px', fontSize: '0.8rem', cursor: 'pointer', marginBottom: '2px' }} onClick={() => {
                         const element = document.getElementById(`editor-project-${expIdx}-${projIdx}`);
-                        element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        if (!element) return;
+                        const header = document.querySelector('header');
+                        const headerHeight = header ? header.getBoundingClientRect().height + 16 : 80;
+                        const top = element.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+                        window.scrollTo({ top, behavior: 'smooth' });
                     }}>
                       • {proj.name || '無題のプロジェクト'}
                     </div>
@@ -134,7 +138,7 @@ export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
           >
             <Download size={14} /> エクスポート
           </Button>
-          <label className="w-full">
+          <label style={{ display: 'block', width: '100%' }}>
             <input type="file" accept=".yml,.yaml" onChange={handleImport} style={{ display: 'none' }} />
             <Button variant="outline" size="sm" className="w-full" as="span" style={{ cursor: 'pointer' }}>
               <Upload size={14} /> インポート
@@ -188,11 +192,12 @@ export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
                     <div className="row-inputs">
                       <input
                         {...register(`profile.links.${index}.label` as any)}
-                        placeholder="GitHub等"
+                        placeholder="表示名 (例: GitHub)"
+                        style={{ maxWidth: '160px' }}
                       />
                       <input
                         {...register(`profile.links.${index}.url` as any)}
-                        placeholder="URL"
+                        placeholder="https://..."
                       />
                     </div>
                     <Button
@@ -365,11 +370,11 @@ const CertEditor = ({
           <div key={index} className="item-row-card">
             <input
               {...register(`profile.certifications.${index}`)}
-              placeholder="AWS認定資格..."
+              placeholder="例: AWS認定ソリューションアーキテクト、応用情報技術者"
             />
-            <button
-              type="button"
-              className="delete-btn icon-only"
+            <Button
+              variant="danger"
+              size="sm"
               onClick={() => {
                 const newCerts = [...certs];
                 newCerts.splice(index, 1);
@@ -377,18 +382,18 @@ const CertEditor = ({
               }}
             >
               <Trash2 size={16} />
-            </button>
+            </Button>
           </div>
         ))}
-        <button
-          type="button"
-          className="add-btn-outline"
+        <Button
+          variant="outline"
+          size="md"
           onClick={() => {
             setValue("profile.certifications", [...certs, ""]);
           }}
         >
           <Plus size={16} /> 資格を追加
-        </button>
+        </Button>
       </div>
     </div>
   );

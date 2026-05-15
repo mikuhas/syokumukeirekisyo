@@ -9,6 +9,15 @@ interface PreviewProps {
   data: Resume;
 }
 
+const scrollToId = (id: string) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const header = document.querySelector('header');
+  const headerHeight = header ? header.getBoundingClientRect().height + 16 : 80;
+  const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+  window.scrollTo({ top, behavior: 'smooth' });
+};
+
 export const Preview: React.FC<PreviewProps> = ({ data }) => {
   // Aggregate skill stack from all projects
   const aggregatedSkillStack: Record<string, Set<string>> = {};
@@ -51,10 +60,22 @@ export const Preview: React.FC<PreviewProps> = ({ data }) => {
         }}>
           <div style={{ fontWeight: 'bold', marginBottom: '15px', color: '#111827', fontSize: '1rem', borderBottom: '2px solid #f3f4f6', paddingBottom: '8px' }}>目次</div>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.95rem' }}>
-            <li><a href="#basic-info" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '500' }}>基本情報</a></li>
-            <li><a href="#skill-stack" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '500' }}>スキルスタック</a></li>
-            <li><a href="#self-promotion" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '500' }}>自己PR</a></li>
-            <li><a href="#work-experience" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '500' }}>職務経歴</a></li>
+            {[
+              { id: 'basic-info', label: '基本情報' },
+              { id: 'skill-stack', label: 'スキルスタック' },
+              { id: 'self-promotion', label: '自己PR' },
+              { id: 'work-experience', label: '職務経歴' },
+            ].map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '500' }}
+                  onClick={(e) => { e.preventDefault(); scrollToId(id); }}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </aside>
@@ -62,8 +83,8 @@ export const Preview: React.FC<PreviewProps> = ({ data }) => {
       <div className="resume-preview">
         <div id="basic-info"><Profile data={data.profile} /></div>
 
-        <section id="skill-stack" className="skill-stack-section" style={{ marginBottom: '25px' }}>
-          <h2>■ スキルスタック</h2>
+        <section id="skill-stack" className="skill-stack-section">
+          <h2>スキルスタック</h2>
           <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #b8c4d0', fontSize: '0.88rem' }}>
             <tbody>
               {categories.map((category) => {
@@ -89,17 +110,19 @@ export const Preview: React.FC<PreviewProps> = ({ data }) => {
         </section>
 
         <section id="self-promotion" className="self-promotion-section">
-          <h2>■ 自己PR</h2>
+          <h2>自己PR</h2>
           <p style={{ whiteSpace: 'pre-wrap' }}>{data.profile.selfPromotion}</p>
         </section>
 
         <section id="work-experience" className="experiences-container">
-          <h2>■ 職務経歴</h2>
+          <h2>職務経歴</h2>
 
           {data.workExperiences.map((exp, idx) => (
             <WorkExperience key={idx} data={exp} expIndex={idx} />
           ))}
         </section>
+
+        <div className="resume-end" style={{ textAlign: 'right', fontSize: '0.9rem', marginTop: '10px' }}>以上</div>
       </div>
     </div>
   );

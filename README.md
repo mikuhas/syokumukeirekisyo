@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# 職務経歴書ジェネレーター
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite で構築した、エンジニア向け職務経歴書作成ツールです。フォームまたは YAML でデータを入力し、プレビュー画面から PDF として出力できます。
 
-Currently, two official plugins are available:
+## 機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **フォームエディター** — GUI で職歴・プロジェクト情報を入力
+- **YAML エディター** — YAML 形式で直接編集（柔軟なコピー&ペースト対応）
+- **プレビュー** — 職務経歴書の仕上がりをリアルタイムで確認
+- **PDF 出力** — ブラウザ印刷経由で PDF として保存
+- **自動保存** — データは LocalStorage に自動保存されるため、ページリロード後も維持
 
-## React Compiler
+## データ構造
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+職務経歴書は以下のセクションで構成されます。
 
-## Expanding the ESLint configuration
+| セクション | 内容 |
+|---|---|
+| プロフィール | 氏名・リンク・職務要約・自己PR・資格 |
+| 職歴 | 会社名・雇用形態・在籍期間 |
+| プロジェクト | プロジェクト名・期間・規模・担当業務・技術スタック |
+| STAR | Situation / Task / Action / Result 形式の実績記述 |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## セットアップ
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+ブラウザで `http://localhost:5173` を開きます。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ビルド
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+`dist/` に静的ファイルが生成されます。
+
+## 使い方
+
+1. **Edit Mode** でフォームまたは YAML タブを選択してデータを入力
+2. **Preview Mode** に切り替えてレイアウトを確認
+3. **PDF 出力** ボタンを押してブラウザの印刷ダイアログから PDF として保存
+
+## 技術スタック
+
+- React 19 / TypeScript
+- Vite
+- Zod（バリデーション）
+- React Hook Form
+- js-yaml（YAML パース）
+- date-fns
+- lucide-react（アイコン）

@@ -92,6 +92,17 @@ header {
   gap: 8px;
 }
 
+.sidebar-actions .button-component {
+  position: relative;
+  justify-content: center;
+}
+
+.sidebar-actions .button-component svg {
+  position: absolute;
+  left: 3.0rem;
+}
+
+
 /* Content Area & Cards */
 .form-content-area {
   flex: 1;
@@ -271,6 +282,7 @@ header {
   border: 1px solid rgba(0,0,0,0.1);
   padding: 0.65rem 1.3rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2);
+  box-sizing: border-box;
 }
 
 .button-component:hover {
@@ -398,7 +410,7 @@ header {
 }
 
 .profile-header {
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #d1d5db;
   padding-bottom: 10px;
   margin-bottom: 30px;
 }
@@ -448,8 +460,12 @@ header {
   color: #111827;
 }
 
+.resume-preview section {
+  margin-bottom: 40px;
+}
+
 .resume-preview h2 {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #162333;
   border-left: 4px solid #162333;
@@ -472,4 +488,213 @@ header {
 
 .tech-tag{
   color: #111827;
+}
+
+/* ── Links & Certs: form editor ── */
+.form-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.links-list,
+.cert-form,
+.cert-items-list,
+.responsibility-form,
+.list-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-row-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.row-inputs {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.row-inputs input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.row-inputs input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.item-row-card input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  background: white;
+}
+
+.item-row-card input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  background: #fecaca;
+}
+
+.delete-btn.icon-only {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.add-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: white;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+  align-self: flex-start;
+}
+
+.add-btn-outline:hover {
+  border-color: #9ca3af;
+  color: #374151;
+  background: #f9fafb;
+}
+
+/* Misc editor helpers */
+.section-intro {
+  margin-bottom: 1rem;
+}
+
+.section-intro h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.section-intro p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.delete-btn-text-sm {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.delete-btn-text-sm:hover {
+  text-decoration: underline;
+}
+
+.nested-header {
+  margin-bottom: 1rem;
+}
+
+.nested-header h5 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.sub-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.project-tech-stack-form {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ── Links & Certs: preview ── */
+.links-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 0.85rem;
+  min-width: 0;
+}
+
+.contact-item .link-url {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-label {
+  font-weight: 600;
+}
+
+.link-url {
+  color: #1d4ed8;
+}
+
+.certifications {
+  margin-top: 20px;
+}
+
+.cert-list {
+  margin: 4px 0 0;
+  padding-left: 1.25em;
+  font-size: 0.9rem;
+  line-height: 1.8;
 }
