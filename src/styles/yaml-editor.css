@@ -1,0 +1,18 @@
+.yaml-editor-textarea {
+  width: 100%;
+  font-family: monospace;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #2d2d2d;
+  color: #ccc;
+  border: 1px solid #444;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.yaml-editor-error {
+  color: #ff6b6b;
+  white-space: pre-wrap;
+  font-size: 12px;
+  margin-top: 10px;
+}

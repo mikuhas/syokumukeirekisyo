@@ -1,0 +1,87 @@
+.form-editor-container {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.form-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-menu {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sidebar-item:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.sidebar-item.active {
+  background: #111827;
+  color: white;
+}
+
+.sidebar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-actions .button-component {
+  position: relative;
+  justify-content: center;
+}
+
+.sidebar-actions .button-component svg {
+  position: absolute;
+  left: 3.0rem;
+}
+
+.sidebar-project-nav {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  border-top: 1px solid #eee;
+}
+
+.sidebar-project-nav-title { font-weight: bold; margin-bottom: 8px; }
+.sidebar-exp-item { margin-bottom: 8px; }
+.sidebar-exp-company { font-weight: 600; margin-bottom: 4px; }
+
+.sidebar-proj-item {
+  padding-left: 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.import-file-label { display: block; width: 100%; }
+.hidden { display: none; }

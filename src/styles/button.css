@@ -1,0 +1,45 @@
+.w-full { width: 100%; }
+
+.button-component {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0.65rem 1.3rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2);
+  box-sizing: border-box;
+}
+
+.button-component:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.button-component:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-primary { background: #111827; color: white; box-shadow: 0 4px 6px -1px rgba(17,24,39,0.2); }
+.btn-primary:hover { background: #1f2937; box-shadow: 0 6px 8px -1px rgba(17,24,39,0.3); }
+
+.btn-outline { background: white; border-color: #d1d5db; color: #374151; }
+.btn-outline:hover { background: #f9fafb; border-color: #9ca3af; }
+
+.btn-danger { background: #fee2e2; color: #dc2626; }
+.btn-danger:hover { background: #fecaca; }
+
+.btn-dashed { background: transparent; border: 2px dashed #d1d5db; color: #6b7280; }
+.btn-dashed:hover { border-color: #9ca3af; color: #4b5563; }
+
+.btn-ghost { background: transparent; color: #6b7280; }
+.btn-ghost:hover { background: #f3f4f6; color: #111827; }
+
+.btn-sm { padding: 4px 8px; font-size: 0.75rem; }
+.btn-md { padding: 8px 16px; font-size: 0.875rem; }
+.btn-lg { padding: 12px 24px; font-size: 1rem; }

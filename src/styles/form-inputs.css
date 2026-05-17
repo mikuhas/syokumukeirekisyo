@@ -1,0 +1,65 @@
+.form-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.links-list,
+.cert-form,
+.cert-items-list,
+.responsibility-form,
+.list-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-row-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.row-inputs {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.row-inputs input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.row-inputs input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.item-row-card input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  background: white;
+}
+
+.item-row-card input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}

@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-color: #f8f9fa;
+  align-items: center;
+}
+
+main {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+header {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+}

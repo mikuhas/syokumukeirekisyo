@@ -1,0 +1,82 @@
+.icon-btn-rich {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  background: transparent;
+  color: #9ca3af;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-btn-rich:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.icon-btn-rich:active {
+  transform: scale(0.95);
+}
+
+.chip-close-btn {
+  background: rgba(0,0,0,0.05);
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  transition: all 0.2s;
+  margin-left: 6px;
+}
+
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover { background: #fecaca; }
+
+.delete-btn.icon-only {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.add-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: white;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+  align-self: flex-start;
+}
+
+.add-btn-outline:hover {
+  border-color: #9ca3af;
+  color: #374151;
+  background: #f9fafb;
+}

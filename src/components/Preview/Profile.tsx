@@ -11,10 +11,10 @@ export const Profile: React.FC<ProfileProps> = ({ data }) => {
 
   return (
     <section className="profile-section">
-      <div className="resume-title-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '20px' }}>
-        <h1 style={{ fontSize: '1.8rem', margin: 0, color: '#162333', letterSpacing: '0.1em' }}>職務経歴書</h1>
-        <div style={{ textAlign: 'right', fontSize: '0.9rem' }}>
-          <div style={{ fontWeight: 'bold' }}>{data.name}</div>
+      <div className="resume-title-header">
+        <h1>職務経歴書</h1>
+        <div className="resume-date-block">
+          <div className="name">{data.name}</div>
           <div>更新日: {today}</div>
         </div>
       </div>

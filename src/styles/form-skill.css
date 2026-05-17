@@ -1,0 +1,61 @@
+.skill-stack-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.category-item-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.chips-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0.75rem;
+}
+
+.form-chip {
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.category-tag {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+.form-chip.active {
+  border-color: #4f46e5;
+  background-color: #eef2ff;
+}
+
+.skill-chip {
+  min-width: 100px;
+  background-color: #eef2ff;
+  border-color: #4f46e5;
+  cursor: pointer;
+}
+
+.category-item-header { display: flex; justify-content: center; margin-bottom: 10px; }
+.skill-add-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.skill-select { flex: 1; padding: 4px; }
+.chips-wrapper-col { flex-direction: column; }
+.skill-chip-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.skill-version-input { width: 80px; padding: 2px 4px; }

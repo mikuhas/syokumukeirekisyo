@@ -1,0 +1,80 @@
+.experience-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+.exp-header-cell { padding: 10px; border-bottom: 2px solid #162333; }
+.exp-company-name { font-weight: bold; font-size: 1rem; color: #162333; margin-right: 15px; }
+.exp-period { font-size: 0.9rem; color: #3a5070; }
+.exp-projects-cell { padding: 10px 0; }
+
+.project-table { width: 100%; margin-bottom: 20px; border-collapse: collapse; border: 1px solid #b8c4d0; }
+
+.project-header-cell {
+  font-weight: bold;
+  font-size: 1.05rem;
+  padding: 10px;
+  border-bottom: 2px solid #d1d5db;
+  color: #162333;
+}
+
+.project-period { font-size: 0.8rem; font-weight: normal; margin-left: 12px; color: #3a5070; }
+
+.project-label-cell {
+  width: 18%;
+  padding: 6px 10px;
+  font-weight: bold;
+  border-right: 1px solid #b8c4d0;
+  border-bottom: 1px solid #b8c4d0;
+  color: #162333;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.project-value-cell { width: 82%; padding: 6px 10px; border-bottom: 1px solid #b8c4d0; font-size: 0.88rem; }
+
+.project-detail-label-cell {
+  width: 18%;
+  padding: 6px 10px;
+  font-weight: bold;
+  border-right: 1px solid #b8c4d0;
+  color: #162333;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.project-detail-value-cell { width: 82%; padding: 6px 10px; font-size: 0.88rem; }
+.project-details-text { white-space: pre-wrap; margin-bottom: 10px; }
+.project-sub-sections { border-top: 1px solid #d0d9e4; padding-top: 8px; }
+.project-section-heading { font-weight: bold; font-size: 0.85rem; margin-bottom: 3px; color: #162333; }
+.project-section-list { margin: 0; padding-left: 22px; font-size: 0.85rem; margin-bottom: 8px; }
+.project-tech-container { margin-bottom: 8px; }
+
+.skill-table { width: 100%; border-collapse: collapse; border: 1px solid #b8c4d0; font-size: 0.88rem; }
+.skill-table-label {
+  width: 150px;
+  padding: 6px 10px;
+  font-weight: bold;
+  border-right: 1px solid #b8c4d0;
+  border-bottom: 1px solid #b8c4d0;
+  color: #162333;
+  white-space: nowrap;
+  vertical-align: top;
+}
+.skill-table-value { padding: 6px 10px; border-bottom: 1px solid #b8c4d0; line-height: 1.7; }
+
+.project-sub-label {
+  font-weight: bold;
+  color: #162333;
+  margin-bottom: 2px;
+  border-left: 3px solid #b8c4d0;
+  padding-left: 8px;
+}
+
+.project-sub-value { white-space: pre-wrap; color: #333; padding-left: 12px; }
+.tech-stack-value { color: #333; padding-left: 12px; }
+.tech-stack-list { font-size: 0.85rem; display: flex; flex-direction: column; gap: 6px; }
+
+.star-section { border-top: 1px solid #d0d9e4; padding-top: 8px; margin-top: 8px; }
+.star-heading { font-weight: bold; font-size: 0.85rem; margin-bottom: 6px; color: #162333; }
+.star-items { font-size: 0.85rem; display: flex; flex-direction: column; gap: 6px; }
+
+.placeholder-text { color: red; }
+.text-muted { color: #aaa; }

@@ -23,12 +23,12 @@ export const YamlEditor: React.FC<YamlEditorProps> = ({ data, onChange }) => {
     try {
       const parsed = yaml.load(text);
       const validated = ResumeSchema.safeParse(parsed);
-      
+
       if (validated.success) {
         onChange(validated.data);
         setError(null);
       } else {
-        setError(validated.error.issues.map((err: any) => `${err.path.join('.')}: ${err.message}`).join('\n'));
+        setError(validated.error.issues.map((err) => `${err.path.join('.')}: ${err.message}`).join('\n'));
       }
     } catch (err: any) {
       setError(err.message);
@@ -38,26 +38,13 @@ export const YamlEditor: React.FC<YamlEditorProps> = ({ data, onChange }) => {
   return (
     <div className="yaml-editor">
       <textarea
+        className="yaml-editor-textarea"
         value={yamlText}
         onChange={handleChange}
         spellCheck={false}
         rows={30}
-        style={{
-          width: '100%',
-          fontFamily: 'monospace',
-          padding: '10px',
-          fontSize: '14px',
-          backgroundColor: '#2d2d2d',
-          color: '#ccc',
-          border: '1px solid #444',
-          borderRadius: '4px'
-        }}
       />
-      {error && (
-        <pre style={{ color: '#ff6b6b', whiteSpace: 'pre-wrap', fontSize: '12px', marginTop: '10px' }}>
-          {error}
-        </pre>
-      )}
+      {error && <pre className="yaml-editor-error">{error}</pre>}
     </div>
   );
 };

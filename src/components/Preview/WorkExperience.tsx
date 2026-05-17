@@ -7,28 +7,32 @@ interface WorkExperienceProps {
   expIndex: number;
 }
 
-export const WorkExperience: React.FC<WorkExperienceProps> = ({ data, expIndex }) => {
-  const formatDate = (dateStr: string | null | undefined) => {
-    if (!dateStr) return '';
-    const date = new Date(dateStr);
-    return `${date.getFullYear()}年${date.getMonth() + 1}月`;
-  };
+const formatDate = (dateStr: string | null | undefined) => {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  return `${date.getFullYear()}年${date.getMonth() + 1}月`;
+};
 
-  const periodDisplay = data.isCurrentlyWorking 
+export const WorkExperience: React.FC<WorkExperienceProps> = ({ data, expIndex }) => {
+  const periodDisplay = data.isCurrentlyWorking
     ? `${formatDate(data.startDate)} - 現在`
     : `${formatDate(data.startDate)} - ${formatDate(data.endDate)}`;
 
   return (
-    <table className="experience-table" style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '25px' }}>
+    <table className="experience-table">
       <tbody>
         <tr>
-          <td colSpan={2} style={{ padding: '10px', borderBottom: '2px solid #162333' }}>
-            <span style={{ fontWeight: 'bold', fontSize: '1rem', color: '#162333', marginRight: '15px' }}>{data.company || <span style={{ color: 'red' }}>(会社名を入力)</span>}</span>
-            <span style={{ fontSize: '0.9rem', color: '#3a5070' }}>{periodDisplay || <span style={{ color: 'red' }}>(期間を入力)</span>}</span>
+          <td colSpan={2} className="exp-header-cell">
+            <span className="exp-company-name">
+              {data.company || <span className="placeholder-text">(会社名を入力)</span>}
+            </span>
+            <span className="exp-period">
+              {periodDisplay || <span className="placeholder-text">(期間を入力)</span>}
+            </span>
           </td>
         </tr>
         <tr>
-          <td colSpan={2} style={{ padding: '10px 0' }}>
+          <td colSpan={2} className="exp-projects-cell">
             <div className="projects-list">
               {data.projects.map((project, idx) => (
                 <Project key={idx} data={project} expIndex={expIndex} projectIndex={idx} />
@@ -40,5 +44,3 @@ export const WorkExperience: React.FC<WorkExperienceProps> = ({ data, expIndex }
     </table>
   );
 };
-
-
