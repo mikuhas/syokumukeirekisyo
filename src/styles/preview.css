@@ -37,28 +37,31 @@
 .tech-tag { color: #111827; }
 
 .links-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: 14px max-content 1fr;
+  column-gap: 6px;
+  row-gap: 4px;
+  align-items: center;
   margin-bottom: 4px;
-}
-
-.contact-item {
-  display: flex;
-  align-items: baseline;
-  gap: 5px;
   font-size: 0.85rem;
-  min-width: 0;
 }
 
-.contact-item .link-url {
+/* display: contents でアイコン・ラベル・URLをグリッドの各セルに直接参加させる */
+.contact-item {
+  display: contents;
+}
+
+.link-label {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.link-url {
+  color: #1d4ed8;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.link-label { font-weight: 600; }
-.link-url { color: #1d4ed8; }
 
 .certifications { margin-top: 20px; }
 

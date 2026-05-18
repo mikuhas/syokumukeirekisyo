@@ -31,7 +31,7 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
         <Button variant="ghost" size="sm" onClick={onRemove}>この経歴を削除</Button>
       </div>
       <div className="form-grid-2col">
-        <div className="form-group">
+        <div className="form-group full-width">
           <label>会社名</label>
           <input {...register(`workExperiences.${index}.company`)} placeholder="株式会社〇〇" />
         </div>
@@ -40,18 +40,18 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
           <input type="month" {...register(`workExperiences.${index}.startDate`)} />
         </div>
         <div className="form-group">
-          <label>終了年月</label>
+          <div className="date-label-row">
+            <label>終了年月</label>
+            <label className="checkbox-label-inline">
+              <input type="checkbox" {...register(`workExperiences.${index}.isCurrentlyWorking`)} />
+              現在も在籍中
+            </label>
+          </div>
           <input
             type="month"
             {...register(`workExperiences.${index}.endDate`)}
             disabled={watch(`workExperiences.${index}.isCurrentlyWorking`)}
           />
-        </div>
-        <div className="form-group">
-          <label className="checkbox-label">
-            <input type="checkbox" {...register(`workExperiences.${index}.isCurrentlyWorking`)} />
-            現在も在籍中
-          </label>
         </div>
         <div className="form-group full-width">
           <label>雇用形態</label>

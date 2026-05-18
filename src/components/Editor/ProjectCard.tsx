@@ -33,15 +33,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <input type="month" {...register(`workExperiences.${nestIndex}.projects.${k}.startDate`)} />
       </div>
       <div className="form-group">
-        <label>終了年月</label>
+        <div className="date-label-row">
+          <label>終了年月</label>
+          <label className="checkbox-label-inline">
+            <input type="checkbox" {...register(`workExperiences.${nestIndex}.projects.${k}.isCurrentlyWorking`)} />
+            現在も担当中
+          </label>
+        </div>
         <input type="month" {...register(`workExperiences.${nestIndex}.projects.${k}.endDate`)} disabled={watch(`workExperiences.${nestIndex}.projects.${k}.isCurrentlyWorking`)} />
       </div>
-    </div>
-    <div className="form-group">
-      <label className="checkbox-label">
-        <input type="checkbox" {...register(`workExperiences.${nestIndex}.projects.${k}.isCurrentlyWorking`)} />
-        現在も担当中
-      </label>
     </div>
     <div className="form-grid-2col">
       <div className="form-group">

@@ -50,7 +50,31 @@
   min-width: 100px;
   background-color: #eef2ff;
   border-color: #4f46e5;
+  cursor: default;
+}
+
+.chip-name {
+  flex: 1;
+  min-width: 0;
+}
+
+.chip-remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+}
+
+.chip-remove-btn:hover {
+  color: #dc2626;
+  background: #fee2e2;
 }
 
 .category-item-header { display: flex; justify-content: center; margin-bottom: 10px; }

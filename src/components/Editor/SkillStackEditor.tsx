@@ -2,6 +2,7 @@ import React from 'react';
 import type { UseFormWatch, UseFormSetValue } from 'react-hook-form';
 import type { Resume } from '../../schema/resumeSchema';
 import { PREDEFINED_TECH_STACK } from '../../constants/techStack';
+import { Trash2 } from 'lucide-react';
 
 type TechItem = { name: string; version?: string };
 type SkillStack = Record<string, TechItem[]>;
@@ -52,9 +53,9 @@ export const SkillStackEditor: React.FC<SkillStackEditorProps> = ({ path, watch,
             <div className="chips-wrapper chips-wrapper-col">
               {(skillStack[cat] ?? []).map((item) => (
                 <div key={item.name} className="skill-chip-row">
-                  <button type="button" className="form-chip skill-chip" onClick={() => removeItem(cat, item.name)}>
-                    {item.name} ×
-                  </button>
+                  <div className="form-chip skill-chip">
+                    <span className="chip-name">{item.name}</span>
+                  </div>
                   <input
                     type="text"
                     className="skill-version-input"
@@ -62,6 +63,14 @@ export const SkillStackEditor: React.FC<SkillStackEditorProps> = ({ path, watch,
                     value={item.version ?? ''}
                     onChange={(e) => updateVersion(cat, item.name, e.target.value)}
                   />
+                  <button
+                    type="button"
+                    className="chip-remove-btn"
+                    onClick={() => removeItem(cat, item.name)}
+                    aria-label={`${item.name}を削除`}
+                  >
+                    <Trash2 size={15} />
+                  </button>
                 </div>
               ))}
             </div>

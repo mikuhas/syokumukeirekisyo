@@ -2,10 +2,10 @@ import type { Resume } from './schema/resumeSchema';
 
 export const mockResume: Resume = {
   profile: {
-    name: '山田 太郎',
+    name: '架空 太郎',
     links: [
-      { label: 'GitHub', url: 'https://github.com/yamada' },
-      { label: 'LinkedIn', url: 'https://linkedin.com/in/yamada' }
+      { label: 'GitHub', url: 'https://github.com/example-user-000' },
+      { label: 'LinkedIn', url: 'https://linkedin.com/in/example-user-000' }
     ],
     summary: '10年以上の経験を持つシニアソフトウェアエンジニア。主にReactとNode.jsを使用したWebアプリケーション開発に従事。',
     selfPromotion: '技術選定からアーキテクチャ設計、チームマネジメントまで幅広く対応可能です。特にパフォーマンス最適化と、保守性の高いコードベースの構築に強みを持っています。新しい技術のキャッチアップも早く、チームの生産性向上に貢献できます。',
@@ -14,7 +14,7 @@ export const mockResume: Resume = {
 
   workExperiences: [
     {
-      company: '株式会社テックイノベーション',
+      company: '株式会社サンプルテック',
       employmentStatus: '正社員',
       startDate: '2020-04',
       endDate: null,
@@ -22,10 +22,23 @@ export const mockResume: Resume = {
       projects: [
         {
           name: '次世代Eコマースプラットフォームの開発',
+          startDate: '2020-04',
+          endDate: '2022-03',
           details: 'マイクロサービスアーキテクチャの導入により、デプロイ頻度を3倍に向上させた。',
           isCurrentlyWorking: false,
           scale: 'チーム15名、開発期間2年',
-          assignedTasks: 'アーキテクチャ設計、決済基盤開発、CI/CDパイプライン構築',
+          assignedTasks: 'テックリード',
+          workContent: [
+            'マイクロサービス移行計画の策定・推進',
+            '決済基盤（Stripe連携）のAPI設計・実装',
+            'Kubernetes上のCI/CDパイプライン構築',
+            'コードレビューおよびチームへの技術指導',
+          ],
+          responsibilities: [
+            'アーキテクチャ設計・技術選定',
+            'バックエンド開発（Go / Node.js）',
+            'インフラ構築・運用（AWS / Kubernetes）',
+          ],
           star: {
             situation: 'モノリシックな旧システムのメンテナンスコストが高騰し、新機能のリリースに時間がかかっていた。',
             task: 'スケーラビリティと開発生産性の向上のため、システムをマイクロサービスへ移行すること。',

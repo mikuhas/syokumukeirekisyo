@@ -28,7 +28,8 @@
 .sidebar-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 0;
   padding: 12px 20px;
   border: none;
   background: transparent;
@@ -37,6 +38,15 @@
   color: #4b5563;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.sidebar-item svg,
+.sidebar-item .lucide {
+  flex-shrink: 0;
+  width: 18px;
+  margin-right: 12px;
 }
 
 .sidebar-item:hover {
