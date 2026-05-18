@@ -9,6 +9,9 @@ import { Button } from './components/Button'
 import { Printer } from 'lucide-react'
 
 const STORAGE_KEY = 'shokumukeirekisho_data'
+const SECTION_ORDER_KEY = 'shokumukeirekisho_section_order'
+export const DEFAULT_SECTION_ORDER = ['summary', 'skill-stack', 'self-promotion', 'work-experience'] as const
+export type SectionId = typeof DEFAULT_SECTION_ORDER[number]
 
 function App() {
   const [isEditMode, setIsEditMode] = useState(true)
@@ -26,9 +29,21 @@ function App() {
     return mockResume
   })
 
+  const [sectionOrder, setSectionOrder] = useState<SectionId[]>(() => {
+    const saved = localStorage.getItem(SECTION_ORDER_KEY)
+    if (saved) {
+      try { return JSON.parse(saved) } catch {}
+    }
+    return [...DEFAULT_SECTION_ORDER]
+  })
+
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(resumeData))
   }, [resumeData])
+
+  useEffect(() => {
+    localStorage.setItem(SECTION_ORDER_KEY, JSON.stringify(sectionOrder))
+  }, [sectionOrder])
 
   return (
     <div className="container">
@@ -68,12 +83,12 @@ function App() {
             {activeTab === 'yaml' ? (
               <YamlEditor data={resumeData} onChange={setResumeData} />
             ) : (
-              <FormEditor data={resumeData} onChange={setResumeData} />
+              <FormEditor data={resumeData} onChange={setResumeData} sectionOrder={sectionOrder} setSectionOrder={setSectionOrder} />
             )}
           </div>
         ) : (
           <div className="preview-view">
-            <Preview data={resumeData} />
+            <Preview data={resumeData} sectionOrder={sectionOrder} />
           </div>
         )}
       </main>

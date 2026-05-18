@@ -2,14 +2,15 @@ import React from 'react';
 import type { UseFormWatch } from 'react-hook-form';
 import type { Resume } from '../../schema/resumeSchema';
 import { Button } from '../Button';
-import { Download, Upload, User, Link as LinkIcon, Briefcase } from 'lucide-react';
+import { Download, Upload, User, Link as LinkIcon, Briefcase, LayoutList } from 'lucide-react';
 
-type Section = 'basic' | 'links' | 'experience';
+type Section = 'basic' | 'links' | 'experience' | 'order';
 
 const MENU_ITEMS = [
   { id: 'basic', label: '基本情報', icon: User },
   { id: 'links', label: 'リンク・資格', icon: LinkIcon },
   { id: 'experience', label: '職務経歴', icon: Briefcase },
+  { id: 'order', label: 'セクション順序', icon: LayoutList },
 ] as const;
 
 interface FormSidebarProps {

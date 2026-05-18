@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import type { Resume } from '../../schema/resumeSchema';
+import type { SectionId } from '../../App';
 import yaml from 'js-yaml';
 import { FormSidebar } from './FormSidebar';
 import { BasicInfoSection } from './BasicInfoSection';
 import { LinksSection } from './LinksSection';
 import { ExperienceSection } from './ExperienceSection';
+import { SectionOrderEditor } from './SectionOrderEditor';
 
 interface FormEditorProps {
   data: Resume;
   onChange: (newData: Resume) => void;
+  sectionOrder: SectionId[];
+  setSectionOrder: (order: SectionId[]) => void;
 }
 
-type Section = 'basic' | 'links' | 'experience';
+type Section = 'basic' | 'links' | 'experience' | 'order';
 
-export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
+export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange, sectionOrder, setSectionOrder }) => {
   const [activeSection, setActiveSection] = useState<Section>('basic');
   const { register, control, watch, setValue, reset } = useForm<Resume>({ defaultValues: data });
 
@@ -62,6 +66,7 @@ export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange }) => {
         {activeSection === 'basic' && <BasicInfoSection register={register} />}
         {activeSection === 'links' && <LinksSection control={control} register={register} watch={watch} setValue={setValue} />}
         {activeSection === 'experience' && <ExperienceSection control={control} register={register} watch={watch} setValue={setValue} />}
+        {activeSection === 'order' && <SectionOrderEditor sectionOrder={sectionOrder} setSectionOrder={setSectionOrder} />}
       </div>
     </div>
   );

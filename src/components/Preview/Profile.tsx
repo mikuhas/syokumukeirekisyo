@@ -33,13 +33,6 @@ export const Profile: React.FC<ProfileProps> = ({ data }) => {
         )}
       </div>
 
-      <div className="profile-grid">
-        <div className="summary-box">
-          <h2>職務要約</h2>
-          <p>{data.summary}</p>
-        </div>
-      </div>
-
       {data.certifications && data.certifications.length > 0 && (
         <div className="certifications">
           <h2>資格</h2>
