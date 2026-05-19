@@ -28,19 +28,7 @@ export const Profile: React.FC<ProfileProps> = ({ data }) => {
         </div>
       </div>
 
-      <div className="profile-header">
-        {data.links && data.links.length > 0 && (
-          <div className="links-info">
-            {data.links.map((link, idx) => (
-              <div key={idx} className="contact-item">
-                <LinkIconForService label={link.label} />
-                <span className="link-label">{link.label}</span>
-                <span className="link-url">{link.url}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      <div className="profile-header" />
 
       {data.certifications && data.certifications.length > 0 && (
         <div className="certifications">

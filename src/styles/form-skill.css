@@ -77,9 +77,105 @@
   background: #fee2e2;
 }
 
-.category-item-header { display: flex; justify-content: center; margin-bottom: 10px; }
-.skill-add-row { display: flex; gap: 8px; margin-bottom: 10px; }
-.skill-select { flex: 1; padding: 4px; }
+.category-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.category-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 3px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+
+.category-delete-btn:hover {
+  color: #dc2626;
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
+
+.skill-add-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.skill-select { flex: 1; padding: 4px; font-size: 0.8rem; }
+
+.skill-custom-input {
+  flex: 1;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.skill-custom-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.skill-custom-add-btn:hover {
+  background: #374151;
+}
+
+.category-add-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 0.5rem;
+}
+
+.category-name-input {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.category-name-input:focus {
+  outline: none;
+  border-color: #6b7280;
+  background: white;
+}
+
+.category-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  background: white;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.category-add-btn:hover {
+  border-color: #111827;
+  color: #111827;
+  background: #f9fafb;
+}
+
 .chips-wrapper-col { flex-direction: column; }
 .skill-chip-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
 .skill-version-input { width: 80px; padding: 2px 4px; }

@@ -59,6 +59,7 @@ export const FormEditor: React.FC<FormEditorProps> = ({ data, onChange, sectionO
         activeSection={activeSection}
         setActiveSection={setActiveSection}
         watch={watch}
+        setValue={setValue}
         onExport={handleExport}
         onImport={handleImport}
       />

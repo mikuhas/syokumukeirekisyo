@@ -1,7 +1,15 @@
 .experience-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
 .exp-header-cell { padding: 10px; border-bottom: 2px solid #162333; }
-.exp-company-name { font-weight: bold; font-size: 1rem; color: #162333; margin-right: 15px; }
-.exp-period { font-size: 0.9rem; color: #3a5070; }
+.exp-company-name { font-weight: bold; font-size: 1rem; color: #162333; margin-right: 10px; }
+.exp-employment-status {
+  font-size: 0.78rem;
+  color: #4b5563;
+  border: 1px solid #9ca3af;
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-right: 10px;
+}
+.exp-period { font-size: 0.9rem; color: #3a5070; margin-right: 15px; }
 .exp-projects-cell { padding: 10px 0; }
 
 .project-table { width: 100%; margin-bottom: 20px; border-collapse: collapse; border: 1px solid #b8c4d0; }

@@ -29,6 +29,9 @@ export const WorkExperience: React.FC<WorkExperienceProps> = ({ data, expIndex }
             <span className="exp-period">
               {periodDisplay || <span className="placeholder-text">(期間を入力)</span>}
             </span>
+            {data.employmentStatus && (
+              <span className="exp-employment-status">{data.employmentStatus}</span>
+            )}
           </td>
         </tr>
         <tr>

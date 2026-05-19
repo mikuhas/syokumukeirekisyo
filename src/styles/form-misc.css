@@ -1,10 +1,12 @@
-.section-intro {
-  margin-bottom: 1rem;
+.section-intro-desc {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
 }
 
 .section-intro h3 {
   margin: 0 0 4px;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -52,31 +54,9 @@
   border-top: 1px solid #e5e7eb;
 }
 
-/* Section order editor */
-.section-order-editor {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  max-width: 480px;
-}
-
-.section-order-title {
-  margin: 0 0 6px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #111827;
-}
-
-.section-order-description {
-  margin: 0 0 1.25rem;
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
 .section-order-list {
   list-style: none;
-  margin: 0;
+  margin: 1.5rem 0 0;
   padding: 4px 0;
   display: flex;
   flex-direction: column;

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useMemo } from 'react';
-import { GripVertical } from 'lucide-react';
+import { GripVertical, LayoutList } from 'lucide-react';
 import type { SectionId } from '../../App';
 
 const SECTION_LABELS: Record<SectionId, string> = {
@@ -82,9 +82,12 @@ export const SectionOrderEditor: React.FC<SectionOrderEditorProps> = ({ sectionO
   };
 
   return (
-    <div className="section-order-editor">
-      <h3 className="section-order-title">セクションの表示順序</h3>
-      <p className="section-order-description">ドラッグして順序を変更できます。</p>
+    <div className="form-card section-order-editor">
+      <div className="card-header">
+        <LayoutList size={20} />
+        <h3>セクション順序</h3>
+      </div>
+      <p className="section-intro-desc">ドラッグして順序を変更できます。</p>
       <ol className="section-order-list">
         {sectionOrder.map((id, index) => {
           const isDragging = draggedId === id;

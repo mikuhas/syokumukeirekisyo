@@ -5,6 +5,9 @@ import { Profile } from './Profile';
 import { WorkExperience } from './WorkExperience';
 import { PreviewTOC } from './PreviewTOC';
 import { SkillStackSection } from './SkillStackSection';
+import { ServiceIcon } from '../ServiceIcon';
+import { Link as LinkIcon } from 'lucide-react';
+import { LINK_SERVICES } from '../../constants/linkServices';
 
 interface PreviewProps {
   data: Resume;
@@ -72,7 +75,19 @@ export const Preview: React.FC<PreviewProps> = ({ data, sectionOrder }) => {
       <div className="resume-preview">
         <div id="basic-info"><Profile data={data.profile} /></div>
         {sectionOrder.map(renderSection)}
-        <div className="resume-end">以上</div>
+        {data.profile.links && data.profile.links.length > 0 && (
+          <div className="links-info preview-links-bottom">
+            {data.profile.links.map((link, idx) => (
+              <div key={idx} className="contact-item">
+                {(LINK_SERVICES as readonly string[]).includes(link.label)
+                  ? <ServiceIcon service={link.label} size={14} />
+                  : <LinkIcon size={14} />}
+                <span className="link-label">{link.label}</span>
+                <span className="link-url">{link.url}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

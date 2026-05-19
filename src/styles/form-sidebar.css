@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0;
+  gap: 12px;
   padding: 12px 20px;
   border: none;
   background: transparent;
@@ -46,7 +46,8 @@
 .sidebar-item .lucide {
   flex-shrink: 0;
   width: 18px;
-  margin-right: 12px;
+  height: 18px;
+  display: block;
 }
 
 .sidebar-item:hover {
@@ -60,38 +61,203 @@
 }
 
 .sidebar-actions {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
 .sidebar-actions .button-component {
-  position: relative;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .sidebar-actions .button-component svg {
-  position: absolute;
-  left: 3.0rem;
+  flex-shrink: 0;
+  display: block;
 }
 
 .sidebar-project-nav {
-  padding: 10px 20px;
+  padding: 14px 20px;
   font-size: 0.85rem;
   color: #6b7280;
-  border-top: 1px solid #eee;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .sidebar-project-nav-title { font-weight: bold; margin-bottom: 8px; }
-.sidebar-exp-item { margin-bottom: 8px; }
-.sidebar-exp-company { font-weight: 600; margin-bottom: 4px; }
 
-.sidebar-proj-item {
-  padding-left: 10px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  margin-bottom: 2px;
+.sidebar-exp-item {
+  margin-bottom: 10px;
 }
 
-.import-file-label { display: block; width: 100%; }
+.sidebar-exp-company {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  padding: 2px 2px;
+  transition: background 0.15s;
+}
+
+.sidebar-exp-company:hover {
+  background: #f3f4f6;
+}
+
+.sidebar-exp-chevron {
+  flex-shrink: 0;
+  color: #9ca3af;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-exp-chevron.expanded {
+  transform: rotate(90deg);
+}
+
+.sidebar-exp-projects {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.2s ease;
+}
+
+.sidebar-exp-projects.collapsed {
+  grid-template-rows: 0fr;
+}
+
+.sidebar-exp-projects > div {
+  overflow: hidden;
+}
+
+.sidebar-exp-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-proj-item {
+  padding-left: 4px;
+  padding-bottom: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.sidebar-proj-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sidebar-proj-title {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.sidebar-proj-date {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sidebar-proj-sep {
+  color: #d1d5db;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* Up/down reorder buttons */
+.sidebar-order-btns {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.sidebar-order-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 2px 3px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  line-height: 1;
+}
+
+.sidebar-order-btn:hover:not(:disabled) {
+  background: #111827;
+  border-color: #111827;
+  color: white;
+}
+
+.sidebar-order-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.sidebar-sort-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-sort-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sidebar-sort-label {
+  flex: 1;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.sidebar-sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  line-height: 1.4;
+}
+
+.sidebar-sort-btn:hover {
+  background: #111827;
+  border-color: #111827;
+  color: white;
+}
+
+.import-file-label { display: flex; }
 .hidden { display: none; }

@@ -8,20 +8,18 @@
 }
 
 .toc-nav {
-  padding: 20px;
   background: white;
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
+  overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .toc-title {
   font-weight: bold;
-  margin-bottom: 15px;
   color: #111827;
-  font-size: 1rem;
-  border-bottom: 2px solid #f3f4f6;
-  padding-bottom: 8px;
+  font-size: 0.9rem;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f3f4f6;
 }
 
 .toc-list {
@@ -30,12 +28,19 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 0.95rem;
 }
 
 .toc-link {
+  display: block;
   color: #4b5563;
   text-decoration: none;
   font-weight: 500;
+  font-size: 0.875rem;
+  padding: 10px 20px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.toc-link:hover {
+  background: #f3f4f6;
+  color: #111827;
 }
