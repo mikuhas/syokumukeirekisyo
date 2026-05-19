@@ -1,15 +1,5 @@
 import React from 'react';
 import type { Profile as ProfileType } from '../../schema/resumeSchema';
-import { LINK_SERVICES } from '../../constants/linkServices';
-import { ServiceIcon } from '../ServiceIcon';
-import { Link as LinkIcon } from 'lucide-react';
-
-const LinkIconForService: React.FC<{ label: string }> = ({ label }) => {
-  if ((LINK_SERVICES as readonly string[]).includes(label)) {
-    return <ServiceIcon service={label} size={14} />;
-  }
-  return <LinkIcon size={14} />;
-};
 
 interface ProfileProps {
   data: ProfileType;
