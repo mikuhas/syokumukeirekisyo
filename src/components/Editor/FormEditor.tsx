@@ -100,19 +100,20 @@ export const FormEditor: React.FC<FormEditorProps> = ({
         {activeSection === 'links' && <LinksSection control={control} register={register} watch={watch} setValue={setValue} />}
         {activeSection === 'experience' && <ExperienceSection control={control} register={register} watch={watch} setValue={setValue} />}
         {activeSection === 'order' && <SectionOrderEditor sectionOrder={sectionOrder} setSectionOrder={setSectionOrder} />}
-        {isMobile && editModal && (
-          <EditModal
-            label={editModal.label}
-            value={editModal.value}
-            inputType={editModal.inputType}
-            onSave={(newValue) => {
-              setValue(editModal.name as any, newValue, { shouldDirty: true });
-              setEditModal(null);
-            }}
-            onClose={() => setEditModal(null)}
-          />
-        )}
       </div>
+      {/* EditModalはform-content-areaの外に置き、handleAreaMouseDownの干渉を防ぐ */}
+      {isMobile && editModal && (
+        <EditModal
+          label={editModal.label}
+          value={editModal.value}
+          inputType={editModal.inputType}
+          onSave={(newValue) => {
+            setValue(editModal.name as any, newValue, { shouldDirty: true });
+            setEditModal(null);
+          }}
+          onClose={() => setEditModal(null)}
+        />
+      )}
     </div>
   );
 };
