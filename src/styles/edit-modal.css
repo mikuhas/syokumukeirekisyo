@@ -1,0 +1,122 @@
+.edit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 400;
+}
+
+/* ボトムシートモーダル本体 */
+.edit-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 16px 16px 0 0;
+  z-index: 401;
+  display: flex;
+  flex-direction: column;
+  /* キーボード表示時にタイトルが隠れないよう max-height を dvh で制限 */
+  max-height: 70dvh;
+  animation: editModalSlideUp 0.2s ease;
+}
+
+@keyframes editModalSlideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0);    }
+}
+
+/* ヘッダー: flex-shrink: 0 でキーボード展開時も常に表示 */
+.edit-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 0.75rem;
+  flex-shrink: 0;
+}
+
+.edit-modal-label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.edit-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.edit-modal-close:hover {
+  background: #f3f4f6;
+}
+
+/* ボディ: flex列にしてtextareaを残り全高に伸ばす */
+.edit-modal-body {
+  padding: 0 1.25rem;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-modal-input {
+  width: 100%;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: #111827;
+  transition: border-color 0.15s;
+  resize: none;
+}
+
+textarea.edit-modal-input {
+  flex: 1;
+  min-height: 100px;
+}
+
+.edit-modal-input:focus {
+  border-color: #111827;
+}
+
+/* フッター: flex-shrink: 0 で常にボタンを表示 */
+.edit-modal-footer {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding: 0.75rem 1.25rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  flex-shrink: 0;
+}
+
+.edit-modal-cancel {
+  background: white;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.edit-modal-save {
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}

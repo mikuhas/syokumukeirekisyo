@@ -4,7 +4,7 @@ import type { Resume } from '../../schema/resumeSchema';
 import { Button } from '../Button';
 import { Download, Upload, User, Link as LinkIcon, Briefcase, LayoutList, ChevronUp, ChevronDown, ChevronRight, ArrowUpNarrowWide, ArrowDownNarrowWide } from 'lucide-react';
 
-type Section = 'basic' | 'links' | 'experience' | 'order';
+export type Section = 'basic' | 'links' | 'experience' | 'order';
 
 const MENU_ITEMS = [
   { id: 'basic', label: '基本情報', icon: User },
@@ -129,49 +129,21 @@ export const FormSidebar: React.FC<FormSidebarProps> = ({
                   />
                   <span className="sidebar-exp-name">{exp.company || `経歴 #${expIdx + 1}`}</span>
                   <div className="sidebar-order-btns" onClick={(e) => e.stopPropagation()}>
-                    <button
-                      type="button"
-                      className="sidebar-order-btn"
-                      onClick={() => moveExp(expIdx, -1)}
-                      disabled={expIdx === 0}
-                      aria-label="上へ"
-                    ><ChevronUp size={12} /></button>
-                    <button
-                      type="button"
-                      className="sidebar-order-btn"
-                      onClick={() => moveExp(expIdx, 1)}
-                      disabled={expIdx === workExperiences.length - 1}
-                      aria-label="下へ"
-                    ><ChevronDown size={12} /></button>
+                    <button type="button" className="sidebar-order-btn" onClick={() => moveExp(expIdx, -1)} disabled={expIdx === 0} aria-label="上へ"><ChevronUp size={12} /></button>
+                    <button type="button" className="sidebar-order-btn" onClick={() => moveExp(expIdx, 1)} disabled={expIdx === workExperiences.length - 1} aria-label="下へ"><ChevronDown size={12} /></button>
                   </div>
                 </div>
                 <div className={`sidebar-exp-projects ${isCollapsed ? 'collapsed' : ''}`}>
                   <div>
                     {(exp.projects ?? []).map((proj, projIdx) => (
-                      <div
-                        key={projIdx}
-                        className="sidebar-proj-item"
-                        onClick={() => scrollTo(`editor-project-${expIdx}-${projIdx}`)}
-                      >
+                      <div key={projIdx} className="sidebar-proj-item" onClick={() => scrollTo(`editor-project-${expIdx}-${projIdx}`)}>
                         <span className="sidebar-proj-title">
                           {proj.startDate && <><span className="sidebar-proj-date">{proj.startDate}</span><span className="sidebar-proj-sep">·</span></>}
                           {proj.name || '無題のプロジェクト'}
                         </span>
                         <div className="sidebar-order-btns">
-                          <button
-                            type="button"
-                            className="sidebar-order-btn"
-                            onClick={(e) => { e.stopPropagation(); moveProj(expIdx, projIdx, -1); }}
-                            disabled={projIdx === 0}
-                            aria-label="上へ"
-                          ><ChevronUp size={12} /></button>
-                          <button
-                            type="button"
-                            className="sidebar-order-btn"
-                            onClick={(e) => { e.stopPropagation(); moveProj(expIdx, projIdx, 1); }}
-                            disabled={projIdx === (exp.projects?.length ?? 0) - 1}
-                            aria-label="下へ"
-                          ><ChevronDown size={12} /></button>
+                          <button type="button" className="sidebar-order-btn" onClick={(e) => { e.stopPropagation(); moveProj(expIdx, projIdx, -1); }} disabled={projIdx === 0} aria-label="上へ"><ChevronUp size={12} /></button>
+                          <button type="button" className="sidebar-order-btn" onClick={(e) => { e.stopPropagation(); moveProj(expIdx, projIdx, 1); }} disabled={projIdx === (exp.projects?.length ?? 0) - 1} aria-label="下へ"><ChevronDown size={12} /></button>
                         </div>
                       </div>
                     ))}

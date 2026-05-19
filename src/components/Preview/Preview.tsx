@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Resume } from '../../schema/resumeSchema';
 import type { SectionId } from '../../App';
+import { usePreviewScale } from '../../hooks/usePreviewScale';
 import { Profile } from './Profile';
 import { WorkExperience } from './WorkExperience';
 import { PreviewTOC } from './PreviewTOC';
@@ -38,6 +39,7 @@ function buildAggregatedSkillStack(data: Resume): Record<string, Set<string>> {
 
 export const Preview: React.FC<PreviewProps> = ({ data, sectionOrder }) => {
   const aggregatedSkillStack = buildAggregatedSkillStack(data);
+  const previewScale = usePreviewScale();
 
   const renderSection = (id: SectionId) => {
     switch (id) {
@@ -72,6 +74,10 @@ export const Preview: React.FC<PreviewProps> = ({ data, sectionOrder }) => {
   return (
     <div className="preview-layout">
       <PreviewTOC onNavigate={scrollToId} sectionOrder={sectionOrder} />
+      <div
+        className="resume-preview-wrapper"
+        style={{ '--preview-scale': previewScale } as React.CSSProperties}
+      >
       <div className="resume-preview">
         <div id="basic-info"><Profile data={data.profile} /></div>
         {sectionOrder.map(renderSection)}
@@ -88,6 +94,7 @@ export const Preview: React.FC<PreviewProps> = ({ data, sectionOrder }) => {
             ))}
           </div>
         )}
+      </div>
       </div>
     </div>
   );

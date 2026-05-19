@@ -1,10 +1,22 @@
 
+/* 印刷専用プレビュー: 通常は非表示 */
+.print-only-preview {
+  display: none;
+}
+
 @media print {
-  /* Hide all UI elements except the resume preview */
-  header, .form-sidebar, .sidebar-actions, .sidebar-menu, .editor-tabs, .form-sidebar, .form-content-area, .controls, .no-print {
+  /* 編集UI・通常プレビューをすべて非表示 */
+  header, .form-sidebar, .sidebar-actions, .sidebar-menu, .editor-tabs,
+  .form-content-area, .controls, .no-print,
+  .editor-view, .preview-view {
     display: none !important;
   }
-  
+
+  /* 印刷専用プレビューを表示 */
+  .print-only-preview {
+    display: block !important;
+  }
+
   body, .container, main {
     background: white !important;
     padding: 0 !important;
@@ -20,39 +32,35 @@
     width: 100% !important;
     margin: 0 !important;
     display: block !important;
+    zoom: 1 !important;
   }
-  
+
   /* Keep section headings with following content */
   h2, h3 {
     break-after: avoid;
     page-break-after: avoid;
   }
 
-  /* Keep experience company header with its projects */
   .experience-table {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  /* Prevent page breaks inside project tables */
   .project-table {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  /* Prevent widows and orphans in text blocks */
   p, li, div {
     orphans: 3;
     widows: 3;
   }
 
-  /* Keep skill stack rows together */
   .tech-category-row {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  /* Prevent "以上" from appearing alone on a new page */
   .resume-end {
     break-before: avoid;
     page-break-before: avoid;

@@ -1,0 +1,228 @@
+/* ===== PC: 768px 以上ではドロワー関連要素を非表示 ===== */
+@media (min-width: 768px) {
+  .sidebar-toggle-btn { display: none; }
+  .sidebar-close-btn  { display: none; }
+  .sidebar-overlay    { display: none; }
+}
+
+/* ===== Mobile: 767px 以下 ===== */
+@media (max-width: 767px) {
+
+  /* --- Layout --- */
+  html, body {
+    overflow-x: clip; /* 横スクロール禁止（clipはstickyを壊さない） */
+  }
+
+  .container {
+    padding: 0;
+    align-items: stretch; /* flex+sticky の相性問題を回避 */
+    overflow-x: clip;
+  }
+
+  main {
+    padding: 0.75rem 0;
+    overflow-x: clip;
+  }
+
+  /* --- リンク行: 固定幅を解除してはみ出しを防ぐ --- */
+  .link-row {
+    flex-wrap: wrap;
+  }
+
+  .link-service-select {
+    width: auto;
+    flex: 1 1 80px;
+    min-width: 0;
+  }
+
+  .link-label-custom-input {
+    width: auto;
+    flex: 1 1 80px;
+    min-width: 0;
+  }
+
+  /* --- Header: sticky で追従（flow を維持するので padding 補正不要） --- */
+  header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  /* Edit/Preview切り替えはサイドメニューに移動したので非表示 */
+  .controls {
+    display: none;
+  }
+
+  /* --- Editor tabs: YAMLタブごと非表示 --- */
+  .editor-tabs {
+    display: none;
+  }
+
+  /* --- Import/Export非表示 --- */
+  .sidebar-actions {
+    display: none;
+  }
+
+  /* --- ハンバーガートグルボタン --- */
+  .sidebar-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #374151;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  /* --- ドロワーオーバーレイ --- */
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 199;
+  }
+
+  /* --- サイドバー → 左からのドロワー --- */
+  .form-editor-container {
+    gap: 1rem;
+  }
+
+  .form-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100dvh;
+    overflow-y: auto;
+    z-index: 200;
+    background: #f8f9fa;
+    padding: 1rem;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    gap: 0.75rem;
+  }
+
+  .form-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* 閉じるボタン（モバイルのみ表示） */
+  .sidebar-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #6b7280;
+    align-self: flex-end;
+    margin-bottom: 0.5rem;
+  }
+
+  /* プロジェクト目次は全幅 */
+  .sidebar-project-nav {
+    width: 100%;
+  }
+
+  /* --- フォームグリッド: 1カラム --- */
+  .form-grid-2col {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid-2col .full-width {
+    grid-column: span 1;
+  }
+
+  /* --- カードの padding 縮小 --- */
+  .form-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .experience-card-group {
+    padding: 1rem;
+  }
+
+  .experience-card-body-inner {
+    padding-top: 1rem;
+  }
+
+  .nested-project-card {
+    padding: 1rem;
+  }
+
+  /* --- スキルスタック: 1カラム --- */
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- STARフォームグリッド: 1カラム --- */
+  .star-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- セクション順序エディター --- */
+  .section-order-editor {
+    max-width: 100%;
+  }
+
+  /* --- カードグループヘッダー: タイトルが flex:1 でスペースを取り、ボタンが落ちない --- */
+  .header-title {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-group-header .button-component,
+  .card-group-header .icon-btn-rich {
+    flex-shrink: 0;
+  }
+
+  /* --- プロジェクトカードヘッダー --- */
+  .project-card-header-title {
+    flex: 1;
+  }
+
+  /* --- date-label-row: 超狭い画面でもチェックボックスが落ちないよう折り返し許可 --- */
+  .date-label-row {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+
+  .checkbox-label-inline {
+    white-space: nowrap;
+  }
+}
+
+/* ===== プレビューモード: モバイル ===== */
+@media (max-width: 767px) {
+
+  .preview-layout {
+    flex-direction: column;
+  }
+
+  /* TOCを非表示 */
+  .preview-sidebar {
+    display: none;
+  }
+
+  /* A4プレビューをzoomで縮小（レイアウト幅も追従するためoverflow不要） */
+  .resume-preview {
+    zoom: var(--preview-scale, 0.45);
+    margin: 0 auto;
+  }
+}
