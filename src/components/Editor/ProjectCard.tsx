@@ -78,10 +78,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   <span className="process-score-header">貢献度</span>
                   {([
                     { key: 'requirements',   label: '要件定義' },
-                    { key: 'basicDesign',    label: '基本設計' },
-                    { key: 'detailedDesign', label: '詳細設計' },
+                    { key: 'design',         label: '設計' },
                     { key: 'frontend',       label: 'フロントエンド' },
                     { key: 'backend',        label: 'バックエンド' },
+                    { key: 'testing',        label: 'テスト' },
                     { key: 'infrastructure', label: 'インフラ' },
                   ] as const).map(({ key, label }) => (
                     <React.Fragment key={key}>

@@ -4,21 +4,15 @@ import type { HighlightSkill } from '../../schema/resumeSchema';
 
 const OPTIONAL_CATEGORIES = ['インフラ・クラウド', 'データベース・ミドルウェア', 'その他フレームワーク'];
 
-const SkillBadge: React.FC<{ skill: HighlightSkill; maxYears: number }> = ({ skill, maxYears }) => {
-  const pct = maxYears > 0 ? skill.years / maxYears : 0;
-  const W = 100;
-  const H = 8;
-  return (
-    <div className="highlight-skill-badge-row">
-      <span className="highlight-skill-badge-name">{skill.name}</span>
-      <svg className="highlight-skill-badge-svg" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" shapeRendering="crispEdges">
-        <rect x={0} y={0} width={W} height={H} fill="#e5e7eb" />
-        <rect x={0} y={0} width={pct * W} height={H} fill="#162333" />
-      </svg>
-      <span className="highlight-skill-badge-years">{skill.years}年</span>
+const SkillCard: React.FC<{ skill: HighlightSkill }> = ({ skill }) => (
+  <div className="highlight-skill-card-box">
+    <div className="highlight-skill-card-name">{skill.name}</div>
+    <div className="highlight-skill-card-inner">
+      <span className="highlight-skill-card-years">{skill.years}</span>
+      <span className="highlight-skill-card-unit">年</span>
     </div>
-  );
-};
+  </div>
+);
 
 interface SkillStackSectionProps {
   aggregatedSkillStack: Record<string, Set<string>>;
@@ -27,7 +21,6 @@ interface SkillStackSectionProps {
 
 export const SkillStackSection: React.FC<SkillStackSectionProps> = ({ aggregatedSkillStack, highlightSkills }) => {
   const activeHighlights = (highlightSkills ?? []).filter(s => s.name);
-  const maxYears = activeHighlights.length > 0 ? Math.max(...activeHighlights.map(s => s.years)) : 0;
 
   return (
     <section id="skill-stack" className="skill-stack-section">
@@ -36,7 +29,7 @@ export const SkillStackSection: React.FC<SkillStackSectionProps> = ({ aggregated
         <>
           <div className="highlight-skills-circles">
             {activeHighlights.map((skill, i) => (
-              <SkillBadge key={i} skill={skill} maxYears={maxYears} />
+              <SkillCard key={i} skill={skill} />
             ))}
           </div>
         </>

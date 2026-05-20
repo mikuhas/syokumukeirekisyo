@@ -12,10 +12,10 @@ interface ProjectProps {
 
 const PROCESS_LABELS = [
   { key: 'requirements',   label: '要件定義' },
-  { key: 'basicDesign',    label: '基本設計' },
-  { key: 'detailedDesign', label: '詳細設計' },
+  { key: 'design',         label: '設計' },
   { key: 'frontend',       label: 'フロントエンド' },
   { key: 'backend',        label: 'バックエンド' },
+  { key: 'testing',        label: 'テスト' },
   { key: 'infrastructure', label: 'インフラ' },
 ] as const;
 
@@ -56,8 +56,8 @@ export const Project: React.FC<ProjectProps> = ({ data, expIndex, projectIndex, 
             <span className="project-period">{periodDisplay}</span>
           </td>
         </tr>
-        <tr>
-            <td className="project-label-cell">担当工程</td>
+        <tr className="project-breakable-row">
+            <td className="project-label-cell">担当工程(貢献度)</td>
             <td className="project-value-cell">
               <div className="process-scores-grid-preview">
                 {[...PROCESS_LABELS]
@@ -75,11 +75,11 @@ export const Project: React.FC<ProjectProps> = ({ data, expIndex, projectIndex, 
               </div>
             </td>
           </tr>
-        <tr>
+        <tr className="project-breakable-row">
           <td className="project-label-cell">職種</td>
           <td className="project-value-cell">{data.assignedTasks || <span className="placeholder-text">(職種を入力)</span>}</td>
         </tr>
-        <tr>
+        <tr className="project-breakable-row">
           <td className="project-label-cell">開発規模</td>
           <td className="project-value-cell">{data.scale || <span className="placeholder-text">(開発規模を入力)</span>}</td>
         </tr>
@@ -89,19 +89,32 @@ export const Project: React.FC<ProjectProps> = ({ data, expIndex, projectIndex, 
             <div className="project-details-text">{data.details || <span className="placeholder-text">(プロジェクト詳細を入力)</span>}</div>
             <div className="project-sub-sections">
               {data.workContent && data.workContent.length > 0 && (
-                <><div className="project-section-heading">■ 作業内容</div>
-                <ul className="project-section-list">{data.workContent.map((item, idx) => <li key={idx}>{item}</li>)}</ul></>
+                <div className="project-sub-block">
+                  <div className="project-section-heading">■ 作業内容</div>
+                  <ul className="project-section-list">{data.workContent.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+                </div>
               )}
               {data.responsibilities && data.responsibilities.length > 0 && (
-                <><div className="project-section-heading">■ 担当業務</div>
-                <ul className="project-section-list">{data.responsibilities.map((res, idx) => <li key={idx}>{res}</li>)}</ul></>
+                <div className="project-sub-block">
+                  <div className="project-section-heading">■ 担当業務</div>
+                  <ul className="project-section-list">{data.responsibilities.map((res, idx) => <li key={idx}>{res}</li>)}</ul>
+                </div>
               )}
-              <div className="project-section-heading">■ 使用技術</div>
-              <div className="project-tech-container"><ProjectTechStack techStack={data.techStack} /></div>
-              {hasStar && <ProjectSTAR star={data.star} />}
+              <div className="project-sub-block">
+                <div className="project-section-heading">■ 使用技術</div>
+                <div className="project-tech-container"><ProjectTechStack techStack={data.techStack} /></div>
+              </div>
             </div>
           </td>
         </tr>
+        {hasStar && (
+          <tr>
+            <td className="project-detail-label-cell project-star-label-cell">課題と対応</td>
+            <td className="project-detail-value-cell project-star-value-cell">
+              <ProjectSTAR star={data.star} />
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

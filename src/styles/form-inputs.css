@@ -216,30 +216,6 @@
 }
 
 /* Highlight Skills Form */
-.highlight-skills-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 10px;
-}
-
-.highlight-skills-bar {
-  width: 3px;
-  height: 14px;
-  background: #162333;
-  display: inline-block;
-  border-radius: 1px;
-  flex-shrink: 0;
-}
-
-.highlight-skills-title {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #374151;
-}
 
 .highlight-skills-col-labels {
   display: grid;
@@ -272,6 +248,8 @@
   background: white;
   color: #111827;
   cursor: pointer;
+  box-sizing: border-box;
+  height: 34px;
 }
 
 .highlight-skill-select:focus {
@@ -294,6 +272,7 @@
   font-size: 0.88rem;
   text-align: center;
   box-sizing: border-box;
+  height: 34px;
 }
 
 .highlight-skill-years-input:disabled {
@@ -325,6 +304,27 @@
 
 .highlight-skill-clear:hover {
   color: #374151;
+}
+
+.highlight-skill-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px dashed #d1d5db;
+  background: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  cursor: pointer;
+  margin-top: 4px;
+  width: 100%;
+  justify-content: center;
+}
+
+.highlight-skill-add-btn:hover {
+  border-color: #162333;
+  color: #162333;
 }
 
 .highlight-skill-hint {

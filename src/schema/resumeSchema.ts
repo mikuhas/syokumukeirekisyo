@@ -9,10 +9,10 @@ export const STARSchema = z.object({
 
 export const ProcessScoresSchema = z.object({
   requirements:   z.number().min(1).max(5).optional(),
-  basicDesign:    z.number().min(1).max(5).optional(),
-  detailedDesign: z.number().min(1).max(5).optional(),
+  design:         z.number().min(1).max(5).optional(),
   frontend:       z.number().min(1).max(5).optional(),
   backend:        z.number().min(1).max(5).optional(),
+  testing:        z.number().min(1).max(5).optional(),
   infrastructure: z.number().min(1).max(5).optional(),
 });
 

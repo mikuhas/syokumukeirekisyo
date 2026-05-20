@@ -2,7 +2,7 @@ import React from 'react';
 import type { UseFormRegister, Control } from 'react-hook-form';
 import { useFieldArray } from 'react-hook-form';
 import type { Resume } from '../../schema/resumeSchema';
-import { User } from 'lucide-react';
+import { User, Plus } from 'lucide-react';
 
 interface BasicInfoSectionProps {
   register: UseFormRegister<Resume>;
@@ -11,27 +11,7 @@ interface BasicInfoSectionProps {
 }
 
 export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ register, control, skillOptions }) => {
-  const { fields, replace } = useFieldArray({ control, name: 'profile.highlightSkills' });
-
-  const slots = [0, 1, 2];
-
-  const handleSkillChange = (index: number, name: string) => {
-    const current = slots.map(i => fields[i] ?? { name: '', years: 0 });
-    const updated = current.map((f, i) => i === index ? { ...f, name } : f);
-    replace(updated.filter(f => f.name));
-  };
-
-  const handleYearsChange = (index: number, years: number) => {
-    const current = slots.map(i => fields[i] ?? { name: '', years: 0 });
-    const updated = current.map((f, i) => i === index ? { ...f, years } : f);
-    replace(updated.filter(f => f.name));
-  };
-
-  const handleClear = (index: number) => {
-    const current = slots.map(i => fields[i] ?? { name: '', years: 0 });
-    const updated = current.filter((_, i) => i !== index);
-    replace(updated.filter(f => f.name));
-  };
+  const { fields, append, remove, update } = useFieldArray({ control, name: 'profile.highlightSkills' });
 
   return (
     <section className="form-card">
@@ -61,53 +41,55 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ register, co
           />
         </div>
         <div className="form-group">
-          <div className="highlight-skills-header">
-            <span className="highlight-skills-bar" />
-            <span className="highlight-skills-title">ハイライトスキル（最大3つ）</span>
-          </div>
-          <div className="highlight-skills-col-labels">
-            <span className="highlight-skill-col-label">スキル名</span>
-            <span className="highlight-skill-col-label">経験年数</span>
-            <span />
-          </div>
-          {slots.map((i) => {
-            const field = fields[i];
-            return (
-              <div key={i} className="highlight-skill-row">
-                <select
-                  className="highlight-skill-select"
-                  value={field?.name ?? ''}
-                  onChange={e => handleSkillChange(i, e.target.value)}
-                >
-                  <option value="">— 選択してください —</option>
-                  {skillOptions.map(opt => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
-                <div className="highlight-skill-years">
-                  <input
-                    type="number"
-                    min={0}
-                    step={0.5}
-                    className="highlight-skill-years-input"
-                    value={field?.years ?? ''}
-                    disabled={!field?.name}
-                    onChange={e => handleYearsChange(i, parseFloat(e.target.value) || 0)}
-                  />
-                  <span className="highlight-skill-years-unit">年</span>
-                </div>
-                {field?.name ? (
+          <label>ハイライトスキル（最大3つ）</label>
+          {fields.length > 0 && (
+            <>
+              <div className="highlight-skills-col-labels">
+                <span className="highlight-skill-col-label">スキル名</span>
+                <span className="highlight-skill-col-label">経験年数</span>
+                <span />
+              </div>
+              {fields.map((field, i) => (
+                <div key={field.id} className="highlight-skill-row">
+                  <select
+                    className="highlight-skill-select"
+                    value={field.name}
+                    onChange={e => update(i, { ...field, name: e.target.value })}
+                  >
+                    <option value="">— 選択してください —</option>
+                    {skillOptions.map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                  <div className="highlight-skill-years">
+                    <input
+                      type="number"
+                      min={0}
+                      step={0.5}
+                      className="highlight-skill-years-input"
+                      value={field.years}
+                      onChange={e => update(i, { ...field, years: parseFloat(e.target.value) || 0 })}
+                    />
+                    <span className="highlight-skill-years-unit">年</span>
+                  </div>
                   <button
                     type="button"
                     className="highlight-skill-clear"
-                    onClick={() => handleClear(i)}
+                    onClick={() => remove(i)}
                   >✕</button>
-                ) : (
-                  <span />
-                )}
-              </div>
-            );
-          })}
+                </div>
+              ))}
+            </>
+          )}
+          {fields.length < 3 && (
+            <button
+              type="button"
+              className="highlight-skill-add-btn"
+              onClick={() => append({ name: '', years: 0 })}
+            >
+              <Plus size={14} /> スキルを追加
+            </button>
+          )}
           <div className="highlight-skill-hint">スキルスタックに登録されている技術から選択できます</div>
         </div>
       </div>

@@ -14,7 +14,6 @@ interface ProjectSTARProps {
 
 export const ProjectSTAR: React.FC<ProjectSTARProps> = ({ star }) => (
   <div className="star-section">
-    <div className="star-heading">■ 課題と対応 (STAR)</div>
     <div className="star-items">
       {STAR_LABELS.map(({ key, label }) => (
         <div key={key}>
