@@ -72,6 +72,37 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 </div>
               </div>
               <div className="form-group">
+                <label>担当工程</label>
+                <div className="process-scores-grid">
+                  <span className="process-score-header">工程名</span>
+                  <span className="process-score-header">貢献度</span>
+                  {([
+                    { key: 'requirements',   label: '要件定義' },
+                    { key: 'basicDesign',    label: '基本設計' },
+                    { key: 'detailedDesign', label: '詳細設計' },
+                    { key: 'frontend',       label: 'フロントエンド' },
+                    { key: 'backend',        label: 'バックエンド' },
+                    { key: 'infrastructure', label: 'インフラ' },
+                  ] as const).map(({ key, label }) => (
+                    <React.Fragment key={key}>
+                      <span className="process-score-label">{label}</span>
+                      <select
+                        {...register(`workExperiences.${nestIndex}.projects.${k}.processScores.${key}`, {
+                          setValueAs: (v) => v === '' ? undefined : Number(v),
+                        })}
+                      >
+                        <option value="">―</option>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                      </select>
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+              <div className="form-group">
                 <label>プロジェクト詳細</label>
                 <textarea {...register(`workExperiences.${nestIndex}.projects.${k}.details`)} rows={3} placeholder="プロジェクトの概要を入力してください。" />
               </div>

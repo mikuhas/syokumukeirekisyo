@@ -1,0 +1,102 @@
+<h2>サークルのスタイル詳細</h2>
+<p class="subtitle">経験年数の見せ方を選んでください</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:20px;background:#f8fafc;">
+      <div style="display:flex;gap:24px;justify-content:center;align-items:flex-end;">
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;border:3px solid #162333;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.6rem;font-weight:800;color:#162333;line-height:1;">5</div>
+            <div style="font-size:0.65rem;color:#6b7280;margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">TypeScript</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;border:3px solid #162333;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.6rem;font-weight:800;color:#162333;line-height:1;">4</div>
+            <div style="font-size:0.65rem;color:#6b7280;margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">React</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;border:3px solid #162333;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.6rem;font-weight:800;color:#162333;line-height:1;">3</div>
+            <div style="font-size:0.65rem;color:#6b7280;margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">Go</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A: 均等サイズ</h3>
+      <p>3つとも同じサイズ。シンプルで整然とした印象。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:20px;background:#f8fafc;">
+      <div style="display:flex;gap:16px;justify-content:center;align-items:flex-end;">
+        <div style="text-align:center;">
+          <div style="width:96px;height:96px;border-radius:50%;border:3px solid #162333;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.9rem;font-weight:800;color:#162333;line-height:1;">5</div>
+            <div style="font-size:0.65rem;color:#6b7280;margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">TypeScript</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;border:3px solid #162333;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.55rem;font-weight:800;color:#162333;line-height:1;">4</div>
+            <div style="font-size:0.65rem;color:#6b7280;margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">React</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:64px;height:64px;border-radius:50%;border:3px solid #162333;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.2rem;font-weight:800;color:#162333;line-height:1;">3</div>
+            <div style="font-size:0.65rem;color:#6b7280;margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">Go</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B: 年数比例サイズ</h3>
+      <p>経験年数が多いほど円が大きく。視覚的な差が一目でわかる。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:20px;background:#f8fafc;">
+      <div style="display:flex;gap:24px;justify-content:center;align-items:flex-end;">
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;background:#162333;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.6rem;font-weight:800;color:white;line-height:1;">5</div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">TypeScript</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;background:#162333;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.6rem;font-weight:800;color:white;line-height:1;">4</div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">React</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;background:#162333;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.6rem;font-weight:800;color:white;line-height:1;">3</div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);margin-top:1px;">年</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:#162333;">Go</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C: 塗りつぶし</h3>
+      <p>ダークな塗りつぶし円。インパクトがあり、強調感が出る。</p>
+    </div>
+  </div>
+
+</div>

@@ -86,3 +86,33 @@
 
 .placeholder-text { color: red; }
 .text-muted { color: #aaa; }
+
+.process-scores-grid-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.process-score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+.process-scores-label {
+  font-size: 0.78rem;
+  color: #374151;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.process-bar-svg {
+  width: 100%;
+  height: 8px;
+  display: block;
+  shape-rendering: crispEdges;
+}

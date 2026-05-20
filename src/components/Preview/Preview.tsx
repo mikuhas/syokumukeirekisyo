@@ -51,7 +51,7 @@ export const Preview: React.FC<PreviewProps> = ({ data, sectionOrder }) => {
           </section>
         );
       case 'skill-stack':
-        return <SkillStackSection key="skill-stack" aggregatedSkillStack={aggregatedSkillStack} />;
+        return <SkillStackSection key="skill-stack" aggregatedSkillStack={aggregatedSkillStack} highlightSkills={data.profile.highlightSkills} />;
       case 'self-promotion':
         return (
           <section key="self-promotion" id="self-promotion" className="self-promotion-section">

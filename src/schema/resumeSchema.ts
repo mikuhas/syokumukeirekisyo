@@ -7,6 +7,15 @@ export const STARSchema = z.object({
   result: z.string().optional(),
 });
 
+export const ProcessScoresSchema = z.object({
+  requirements:   z.number().min(1).max(5).optional(),
+  basicDesign:    z.number().min(1).max(5).optional(),
+  detailedDesign: z.number().min(1).max(5).optional(),
+  frontend:       z.number().min(1).max(5).optional(),
+  backend:        z.number().min(1).max(5).optional(),
+  infrastructure: z.number().min(1).max(5).optional(),
+});
+
 export const ProjectSchema = z.object({
   name: z.string().min(1, 'Project name is required'),
   startDate: z.string().optional(),
@@ -22,6 +31,7 @@ export const ProjectSchema = z.object({
     name: z.string(),
     version: z.string().optional(),
   }))).optional(),
+  processScores: ProcessScoresSchema.optional(),
 });
 
 export const WorkExperienceSchema = z.object({
@@ -33,6 +43,11 @@ export const WorkExperienceSchema = z.object({
   projects: z.array(ProjectSchema),
 });
 
+export const HighlightSkillSchema = z.object({
+  name: z.string(),
+  years: z.number().min(0),
+});
+
 export const ProfileSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   links: z.array(z.object({
@@ -42,6 +57,7 @@ export const ProfileSchema = z.object({
   summary: z.string().min(1, 'Summary is required'),
   selfPromotion: z.string().min(1, 'Self promotion is required'),
   certifications: z.array(z.string()).optional(),
+  highlightSkills: z.array(HighlightSkillSchema).max(3).optional(),
 });
 
 export const ResumeSchema = z.object({
@@ -49,6 +65,8 @@ export const ResumeSchema = z.object({
   workExperiences: z.array(WorkExperienceSchema),
 });
 
+export type ProcessScores = z.infer<typeof ProcessScoresSchema>;
+export type HighlightSkill = z.infer<typeof HighlightSkillSchema>;
 export type STAR = z.infer<typeof STARSchema>;
 export type Project = z.infer<typeof ProjectSchema>;
 export type WorkExperience = z.infer<typeof WorkExperienceSchema>;

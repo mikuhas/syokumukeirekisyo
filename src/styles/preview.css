@@ -39,6 +39,49 @@
   background: none;
 }
 
+/* Highlight Skills Preview */
+.highlight-skills-circles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  max-width: 360px;
+}
+
+.highlight-skill-badge-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 36px;
+  align-items: center;
+  gap: 10px;
+}
+
+.highlight-skill-badge-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #162333;
+  white-space: nowrap;
+}
+
+.highlight-skill-badge-bar-wrap {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.highlight-skill-badge-bar-fill {
+  height: 100%;
+  background: #162333;
+  border-radius: 0;
+}
+
+.highlight-skill-badge-years {
+  font-size: 0.82rem;
+  color: #374151;
+  text-align: right;
+  white-space: nowrap;
+}
+
 .tech-category-row { margin-bottom: 8px; }
 .tech-category-label { font-weight: 700; font-size: 1.15rem; color: #111827; }
 .tech-tag { color: #111827; }
@@ -98,5 +141,4 @@
 
 .resume-title-header h1 { font-size: 1.8rem; margin: 0; color: #162333; letter-spacing: 0.1em; }
 .resume-date-block { text-align: right; font-size: 0.9rem; }
-.resume-date-block .name { font-weight: bold; }
-.self-promotion-section p { white-space: pre-wrap; }
+.resume-date-block .name { font-weight: bold; }.self-promotion-section p { white-space: pre-wrap; }

@@ -5,6 +5,7 @@ interface ProfileProps {
   data: ProfileType;
 }
 
+
 export const Profile: React.FC<ProfileProps> = ({ data }) => {
   const today = new Date().toLocaleDateString('ja-JP');
 
@@ -19,6 +20,7 @@ export const Profile: React.FC<ProfileProps> = ({ data }) => {
       </div>
 
       <div className="profile-header" />
+
 
       {data.certifications && data.certifications.length > 0 && (
         <div className="certifications">

@@ -96,7 +96,21 @@ export const FormEditor: React.FC<FormEditorProps> = ({
         onImport={handleImport}
       />
       <div className="form-content-area" onMouseDown={handleAreaMouseDown}>
-        {activeSection === 'basic' && <BasicInfoSection register={register} />}
+        {activeSection === 'basic' && (
+          <BasicInfoSection
+            register={register}
+            control={control}
+            skillOptions={Array.from(new Set(
+              (watch('workExperiences') ?? []).flatMap(exp =>
+                exp.projects?.flatMap(p =>
+                  Object.values(p.techStack ?? {}).flatMap(items =>
+                    items.map(item => item.name).filter(Boolean)
+                  )
+                ) ?? []
+              )
+            ))}
+          />
+        )}
         {activeSection === 'links' && <LinksSection control={control} register={register} watch={watch} setValue={setValue} />}
         {activeSection === 'experience' && <ExperienceSection control={control} register={register} watch={watch} setValue={setValue} />}
         {activeSection === 'order' && <SectionOrderEditor sectionOrder={sectionOrder} setSectionOrder={setSectionOrder} />}

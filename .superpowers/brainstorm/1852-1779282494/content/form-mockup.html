@@ -1,0 +1,89 @@
+<h2>フォームUI モックアップ</h2>
+<p class="subtitle">「基本情報」タブ内、自己PRの下に追加されるセクション</p>
+
+<div class="mockup">
+  <div class="mockup-header">基本情報 > ハイライトスキル</div>
+  <div class="mockup-body" style="padding:16px;background:white;">
+
+    <div style="font-size:0.78rem;font-weight:600;color:#374151;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+      <span style="width:3px;height:14px;background:#162333;display:inline-block;border-radius:1px;"></span>
+      ハイライトスキル（最大3つ）
+    </div>
+
+    <!-- Header row -->
+    <div style="display:grid;grid-template-columns:1fr 80px 32px;gap:8px;margin-bottom:6px;padding:0 4px;">
+      <div style="font-size:0.72rem;color:#9ca3af;font-weight:600;">スキル名</div>
+      <div style="font-size:0.72rem;color:#9ca3af;font-weight:600;">経験年数</div>
+      <div></div>
+    </div>
+
+    <!-- Row 1 -->
+    <div style="display:grid;grid-template-columns:1fr 80px 32px;gap:8px;align-items:center;margin-bottom:8px;">
+      <select style="width:100%;border:1px solid #d1d5db;border-radius:6px;padding:6px 8px;font-size:0.88rem;background:white;">
+        <option>TypeScript</option>
+        <option>React</option>
+        <option>Go</option>
+        <option>Node.js</option>
+      </select>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <input type="number" value="5" style="width:48px;border:1px solid #d1d5db;border-radius:6px;padding:6px 8px;font-size:0.88rem;text-align:center;" />
+        <span style="font-size:0.82rem;color:#6b7280;flex-shrink:0;">年</span>
+      </div>
+      <button style="border:none;background:none;color:#9ca3af;font-size:1rem;cursor:pointer;padding:4px;">✕</button>
+    </div>
+
+    <!-- Row 2 -->
+    <div style="display:grid;grid-template-columns:1fr 80px 32px;gap:8px;align-items:center;margin-bottom:8px;">
+      <select style="width:100%;border:1px solid #d1d5db;border-radius:6px;padding:6px 8px;font-size:0.88rem;background:white;">
+        <option>React</option>
+        <option>TypeScript</option>
+        <option>Go</option>
+      </select>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <input type="number" value="4" style="width:48px;border:1px solid #d1d5db;border-radius:6px;padding:6px 8px;font-size:0.88rem;text-align:center;" />
+        <span style="font-size:0.82rem;color:#6b7280;flex-shrink:0;">年</span>
+      </div>
+      <button style="border:none;background:none;color:#9ca3af;font-size:1rem;cursor:pointer;padding:4px;">✕</button>
+    </div>
+
+    <!-- Row 3 (empty) -->
+    <div style="display:grid;grid-template-columns:1fr 80px 32px;gap:8px;align-items:center;margin-bottom:12px;opacity:0.5;">
+      <select style="width:100%;border:1px solid #d1d5db;border-radius:6px;padding:6px 8px;font-size:0.88rem;background:white;color:#9ca3af;">
+        <option value="">— 選択してください —</option>
+      </select>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <input type="number" placeholder="0" style="width:48px;border:1px solid #d1d5db;border-radius:6px;padding:6px 8px;font-size:0.88rem;text-align:center;" />
+        <span style="font-size:0.82rem;color:#6b7280;flex-shrink:0;">年</span>
+      </div>
+      <div></div>
+    </div>
+
+    <div style="font-size:0.75rem;color:#9ca3af;">スキルスタックに登録されている技術から選択できます</div>
+  </div>
+</div>
+
+<div style="margin-top:24px;">
+  <h3>プレビューのイメージ（スキルスタックセクション冒頭）</h3>
+  <div class="mockup">
+    <div class="mockup-header">スキルスタック セクション</div>
+    <div class="mockup-body" style="padding:20px;background:white;">
+      <div style="display:flex;gap:32px;justify-content:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #e5e7eb;">
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;border:3px solid #162333;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.6rem;font-weight:800;color:#162333;line-height:1;">5</div>
+            <div style="font-size:0.65rem;color:#6b7280;">年</div>
+          </div>
+          <div style="font-size:0.85rem;font-weight:700;color:#162333;">TypeScript</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:80px;height:80px;border-radius:50%;border:3px solid #162333;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <div style="font-size:1.6rem;font-weight:800;color:#162333;line-height:1;">4</div>
+            <div style="font-size:0.65rem;color:#6b7280;">年</div>
+          </div>
+          <div style="font-size:0.85rem;font-weight:700;color:#162333;">React</div>
+        </div>
+      </div>
+      <div style="font-size:0.75rem;color:#9ca3af;text-align:center;">↓ 既存のスキルスタック一覧が続く</div>
+    </div>
+  </div>
+</div>

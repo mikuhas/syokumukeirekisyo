@@ -47,7 +47,7 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
             <div className="experience-card-body-inner">
             <div className="form-grid-2col">
               <div className="form-group full-width">
-                <label>会社名</label>
+                <label>会社名/案件名</label>
                 <input {...register(`workExperiences.${index}.company`)} placeholder="株式会社〇〇" />
               </div>
               <div className="form-group">

@@ -9,6 +9,31 @@ interface ProjectProps {
   projectIndex: number;
 }
 
+const PROCESS_LABELS = [
+  { key: 'requirements',   label: '要件定義' },
+  { key: 'basicDesign',    label: '基本設計' },
+  { key: 'detailedDesign', label: '詳細設計' },
+  { key: 'frontend',       label: 'フロントエンド' },
+  { key: 'backend',        label: 'バックエンド' },
+  { key: 'infrastructure', label: 'インフラ' },
+] as const;
+
+
+const ProcessBarGraph: React.FC<{ level: number | undefined }> = ({ level }) => {
+  const filled = Math.max(0, Number(level) || 0);
+  const W = 100;
+  const H = 8;
+  return (
+    <svg className="process-bar-svg" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" shapeRendering="crispEdges">
+      <rect x={0} y={0} width={W} height={H} fill="#e5e7eb" />
+      <rect x={0} y={0} width={(filled / 5) * W} height={H} fill="#162333" />
+      {[20, 40, 60, 80].map(x => (
+        <line key={x} x1={x + 0.5} y1={0} x2={x + 0.5} y2={H} stroke="white" strokeWidth={1} />
+      ))}
+    </svg>
+  );
+};
+
 const formatDate = (dateStr: string | null | undefined) => {
   if (!dateStr) return '';
   const date = new Date(dateStr);
@@ -30,6 +55,19 @@ export const Project: React.FC<ProjectProps> = ({ data, expIndex, projectIndex }
             <span className="project-period">{periodDisplay}</span>
           </td>
         </tr>
+        <tr>
+            <td className="project-label-cell">担当工程</td>
+            <td className="project-value-cell">
+              <div className="process-scores-grid-preview">
+                {[...PROCESS_LABELS].sort((a, b) => (data.processScores?.[b.key] ?? 0) - (data.processScores?.[a.key] ?? 0)).map(({ key, label }) => (
+                  <div key={key} className="process-score-item">
+                    <span className="process-scores-label">{label}</span>
+                    <ProcessBarGraph level={data.processScores?.[key]} />
+                  </div>
+                ))}
+              </div>
+            </td>
+          </tr>
         <tr>
           <td className="project-label-cell">職種</td>
           <td className="project-value-cell">{data.assignedTasks || <span className="placeholder-text">(職種を入力)</span>}</td>

@@ -129,3 +129,156 @@
   border-color: #4f46e5;
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
+
+.process-scores-grid {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 6px 12px;
+  align-items: center;
+}
+
+.process-score-header {
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: #6b7280;
+}
+
+.process-score-label {
+  font-size: 0.88rem;
+  color: #374151;
+}
+
+.process-scores-grid select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.88rem;
+  background: white;
+  color: #111827;
+  cursor: pointer;
+  width: 100%;
+}
+
+.process-scores-grid select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Highlight Skills Form */
+.highlight-skills-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.highlight-skills-bar {
+  width: 3px;
+  height: 14px;
+  background: #162333;
+  display: inline-block;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.highlight-skills-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.highlight-skills-col-labels {
+  display: grid;
+  grid-template-columns: 1fr 88px 32px;
+  gap: 8px;
+  padding: 0 4px;
+  margin-bottom: 6px;
+}
+
+.highlight-skill-col-label {
+  font-size: 0.72rem;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.highlight-skill-row {
+  display: grid;
+  grid-template-columns: 1fr 88px 32px;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.highlight-skill-select {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.88rem;
+  background: white;
+  color: #111827;
+  cursor: pointer;
+}
+
+.highlight-skill-select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.highlight-skill-years {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.highlight-skill-years-input {
+  width: 48px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.88rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.highlight-skill-years-input:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+.highlight-skill-years-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.highlight-skill-years-unit {
+  font-size: 0.82rem;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.highlight-skill-clear {
+  border: none;
+  background: none;
+  color: #9ca3af;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.highlight-skill-clear:hover {
+  color: #374151;
+}
+
+.highlight-skill-hint {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}

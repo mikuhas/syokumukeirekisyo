@@ -1,0 +1,100 @@
+<h2>円形プログレスデザイン</h2>
+<p class="subtitle">最大経験年数を基準に円が埋まっていきます（例: 最大5年）</p>
+
+<div class="mockup">
+  <div class="mockup-header">スキルスタック — ハイライトスキル（プレビューイメージ）</div>
+  <div class="mockup-body" style="padding:28px;background:white;">
+    <div style="display:flex;gap:40px;justify-content:center;">
+
+      <!-- TypeScript: 5/5 = 100% -->
+      <div style="text-align:center;">
+        <svg width="88" height="88" viewBox="0 0 88 88">
+          <!-- Track -->
+          <circle cx="44" cy="44" r="36" fill="none" stroke="#e5e7eb" stroke-width="6"/>
+          <!-- Fill: 100% (circumference = 2πr ≈ 226.2) -->
+          <circle cx="44" cy="44" r="36" fill="none" stroke="#162333" stroke-width="6"
+            stroke-dasharray="226.2 226.2"
+            stroke-dashoffset="0"
+            stroke-linecap="butt"
+            transform="rotate(-90 44 44)"/>
+          <!-- Center text -->
+          <text x="44" y="40" text-anchor="middle" font-size="18" font-weight="800" fill="#162333" font-family="sans-serif">5</text>
+          <text x="44" y="54" text-anchor="middle" font-size="10" fill="#9ca3af" font-family="sans-serif">年</text>
+        </svg>
+        <div style="font-size:0.85rem;font-weight:700;color:#162333;margin-top:6px;">TypeScript</div>
+      </div>
+
+      <!-- React: 4/5 = 80% -->
+      <div style="text-align:center;">
+        <svg width="88" height="88" viewBox="0 0 88 88">
+          <circle cx="44" cy="44" r="36" fill="none" stroke="#e5e7eb" stroke-width="6"/>
+          <!-- Fill: 80% (226.2 * 0.8 = 180.96) -->
+          <circle cx="44" cy="44" r="36" fill="none" stroke="#162333" stroke-width="6"
+            stroke-dasharray="180.96 226.2"
+            stroke-dashoffset="0"
+            stroke-linecap="butt"
+            transform="rotate(-90 44 44)"/>
+          <text x="44" y="40" text-anchor="middle" font-size="18" font-weight="800" fill="#162333" font-family="sans-serif">4</text>
+          <text x="44" y="54" text-anchor="middle" font-size="10" fill="#9ca3af" font-family="sans-serif">年</text>
+        </svg>
+        <div style="font-size:0.85rem;font-weight:700;color:#162333;margin-top:6px;">React</div>
+      </div>
+
+      <!-- Go: 2/5 = 40% -->
+      <div style="text-align:center;">
+        <svg width="88" height="88" viewBox="0 0 88 88">
+          <circle cx="44" cy="44" r="36" fill="none" stroke="#e5e7eb" stroke-width="6"/>
+          <!-- Fill: 40% (226.2 * 0.4 = 90.48) -->
+          <circle cx="44" cy="44" r="36" fill="none" stroke="#162333" stroke-width="6"
+            stroke-dasharray="90.48 226.2"
+            stroke-dashoffset="0"
+            stroke-linecap="butt"
+            transform="rotate(-90 44 44)"/>
+          <text x="44" y="40" text-anchor="middle" font-size="18" font-weight="800" fill="#162333" font-family="sans-serif">2</text>
+          <text x="44" y="54" text-anchor="middle" font-size="10" fill="#9ca3af" font-family="sans-serif">年</text>
+        </svg>
+        <div style="font-size:0.85rem;font-weight:700;color:#162333;margin-top:6px;">Go</div>
+      </div>
+
+    </div>
+    <div style="text-align:center;font-size:0.72rem;color:#9ca3af;margin-top:16px;">最大値（5年）を基準に円弧が埋まります</div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:24px;">円弧のスタイルはどちらが好みですか？</p>
+
+<div class="cards">
+  <div class="card" data-choice="flat" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:20px;background:#f8fafc;display:flex;justify-content:center;">
+      <svg width="88" height="88" viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r="36" fill="none" stroke="#e5e7eb" stroke-width="7"/>
+        <circle cx="44" cy="44" r="36" fill="none" stroke="#162333" stroke-width="7"
+          stroke-dasharray="158.3 226.2" stroke-dashoffset="0"
+          stroke-linecap="butt" transform="rotate(-90 44 44)"/>
+        <text x="44" y="40" text-anchor="middle" font-size="18" font-weight="800" fill="#162333" font-family="sans-serif">3.5</text>
+        <text x="44" y="54" text-anchor="middle" font-size="10" fill="#9ca3af" font-family="sans-serif">年</text>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>フラット（端が直角）</h3>
+      <p>スクエアなカット。クリーンで印刷に馴染む。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="round" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:20px;background:#f8fafc;display:flex;justify-content:center;">
+      <svg width="88" height="88" viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r="36" fill="none" stroke="#e5e7eb" stroke-width="7"/>
+        <circle cx="44" cy="44" r="36" fill="none" stroke="#162333" stroke-width="7"
+          stroke-dasharray="158.3 226.2" stroke-dashoffset="0"
+          stroke-linecap="round" transform="rotate(-90 44 44)"/>
+        <text x="44" y="40" text-anchor="middle" font-size="18" font-weight="800" fill="#162333" font-family="sans-serif">3.5</text>
+        <text x="44" y="54" text-anchor="middle" font-size="10" fill="#9ca3af" font-family="sans-serif">年</text>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>ラウンド（端が丸）</h3>
+      <p>丸みがあり柔らかな印象。モダンなデザイン。</p>
+    </div>
+  </div>
+</div>

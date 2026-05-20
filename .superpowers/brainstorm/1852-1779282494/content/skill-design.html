@@ -1,0 +1,108 @@
+<h2>ハイライトスキルのデザイン案</h2>
+<p class="subtitle">スキルスタックセクション先頭に表示される3スキルのデザインを選んでください</p>
+
+<div class="cards">
+
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f8fafc;">
+      <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;margin-bottom:12px;font-weight:600;">主要スキル</div>
+      <div style="display:flex;gap:10px;">
+        <div style="flex:1;background:white;border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-size:1.1rem;font-weight:700;color:#162333;">TypeScript</div>
+          <div style="font-size:1.6rem;font-weight:800;color:#3b82f6;line-height:1.2;">5<span style="font-size:0.8rem;font-weight:500;color:#6b7280;">年</span></div>
+          <div style="height:6px;background:#e5e7eb;border-radius:3px;margin-top:8px;">
+            <div style="width:100%;height:100%;background:#3b82f6;border-radius:3px;"></div>
+          </div>
+        </div>
+        <div style="flex:1;background:white;border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-size:1.1rem;font-weight:700;color:#162333;">React</div>
+          <div style="font-size:1.6rem;font-weight:800;color:#3b82f6;line-height:1.2;">4<span style="font-size:0.8rem;font-weight:500;color:#6b7280;">年</span></div>
+          <div style="height:6px;background:#e5e7eb;border-radius:3px;margin-top:8px;">
+            <div style="width:80%;height:100%;background:#3b82f6;border-radius:3px;"></div>
+          </div>
+        </div>
+        <div style="flex:1;background:white;border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-size:1.1rem;font-weight:700;color:#162333;">Go</div>
+          <div style="font-size:1.6rem;font-weight:800;color:#3b82f6;line-height:1.2;">3<span style="font-size:0.8rem;font-weight:500;color:#6b7280;">年</span></div>
+          <div style="height:6px;background:#e5e7eb;border-radius:3px;margin-top:8px;">
+            <div style="width:60%;height:100%;background:#3b82f6;border-radius:3px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A: カード型</h3>
+      <p>スキル名・経験年数・バーをカードで表示。バーは最大経験年数を基準に相対表示。</p>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f8fafc;">
+      <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;margin-bottom:12px;font-weight:600;">主要スキル</div>
+      <div style="display:flex;gap:12px;justify-content:center;">
+        <div style="text-align:center;">
+          <div style="width:72px;height:72px;border-radius:50%;border:4px solid #162333;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 6px;">
+            <div style="font-size:1.3rem;font-weight:800;color:#162333;line-height:1;">5</div>
+            <div style="font-size:0.6rem;color:#6b7280;">年</div>
+          </div>
+          <div style="font-size:0.85rem;font-weight:600;color:#162333;">TypeScript</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:72px;height:72px;border-radius:50%;border:4px solid #162333;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 6px;opacity:0.7;">
+            <div style="font-size:1.3rem;font-weight:800;color:#162333;line-height:1;">4</div>
+            <div style="font-size:0.6rem;color:#6b7280;">年</div>
+          </div>
+          <div style="font-size:0.85rem;font-weight:600;color:#162333;">React</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:72px;height:72px;border-radius:50%;border:4px solid #162333;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 6px;opacity:0.5;">
+            <div style="font-size:1.3rem;font-weight:800;color:#162333;line-height:1;">3</div>
+            <div style="font-size:0.6rem;color:#6b7280;">年</div>
+          </div>
+          <div style="font-size:0.85rem;font-weight:600;color:#162333;">Go</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B: サークル型</h3>
+      <p>年数を大きく円の中に表示。経験が長いほど濃く表示し、存在感を出すデザイン。</p>
+    </div>
+  </div>
+
+  <!-- Option C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f8fafc;">
+      <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;margin-bottom:12px;font-weight:600;">主要スキル</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:90px;font-size:0.85rem;font-weight:600;color:#162333;flex-shrink:0;">TypeScript</div>
+          <div style="flex:1;height:10px;background:#e5e7eb;border-radius:0;">
+            <div style="width:100%;height:100%;background:#162333;"></div>
+          </div>
+          <div style="width:32px;text-align:right;font-size:0.85rem;font-weight:700;color:#162333;flex-shrink:0;">5年</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:90px;font-size:0.85rem;font-weight:600;color:#162333;flex-shrink:0;">React</div>
+          <div style="flex:1;height:10px;background:#e5e7eb;border-radius:0;">
+            <div style="width:80%;height:100%;background:#162333;"></div>
+          </div>
+          <div style="width:32px;text-align:right;font-size:0.85rem;font-weight:700;color:#162333;flex-shrink:0;">4年</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:90px;font-size:0.85rem;font-weight:600;color:#162333;flex-shrink:0;">Go</div>
+          <div style="flex:1;height:10px;background:#e5e7eb;border-radius:0;">
+            <div style="width:60%;height:100%;background:#162333;"></div>
+          </div>
+          <div style="width:32px;text-align:right;font-size:0.85rem;font-weight:700;color:#162333;flex-shrink:0;">3年</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C: バー型（横並び）</h3>
+      <p>横バーで経験年数を視覚化。印刷物に馴染むシンプルで落ち着いたデザイン。</p>
+    </div>
+  </div>
+
+</div>
