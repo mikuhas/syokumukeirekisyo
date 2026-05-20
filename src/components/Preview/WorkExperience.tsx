@@ -5,6 +5,7 @@ import { Project } from './Project';
 interface WorkExperienceProps {
   data: WorkExperienceType;
   expIndex: number;
+  processScoreOrder?: 'process' | 'score';
 }
 
 const formatDate = (dateStr: string | null | undefined) => {
@@ -13,7 +14,7 @@ const formatDate = (dateStr: string | null | undefined) => {
   return `${date.getFullYear()}年${date.getMonth() + 1}月`;
 };
 
-export const WorkExperience: React.FC<WorkExperienceProps> = ({ data, expIndex }) => {
+export const WorkExperience: React.FC<WorkExperienceProps> = ({ data, expIndex, processScoreOrder }) => {
   const periodDisplay = data.isCurrentlyWorking
     ? `${formatDate(data.startDate)} - 現在`
     : `${formatDate(data.startDate)} - ${formatDate(data.endDate)}`;
@@ -38,7 +39,7 @@ export const WorkExperience: React.FC<WorkExperienceProps> = ({ data, expIndex }
           <td colSpan={2} className="exp-projects-cell">
             <div className="projects-list">
               {data.projects.map((project, idx) => (
-                <Project key={idx} data={project} expIndex={expIndex} projectIndex={idx} />
+                <Project key={idx} data={project} expIndex={expIndex} projectIndex={idx} processScoreOrder={processScoreOrder} />
               ))}
             </div>
           </td>

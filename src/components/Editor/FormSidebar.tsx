@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { UseFormWatch, UseFormSetValue } from 'react-hook-form';
 import type { Resume } from '../../schema/resumeSchema';
 import { Button } from '../Button';
-import { Download, Upload, User, Link as LinkIcon, Briefcase, LayoutList, ChevronUp, ChevronDown, ChevronRight, ArrowUpNarrowWide, ArrowDownNarrowWide } from 'lucide-react';
+import { Download, Upload, User, Link as LinkIcon, Briefcase, LayoutList, ChevronUp, ChevronDown, ChevronRight } from 'lucide-react';
 
 export type Section = 'basic' | 'links' | 'experience' | 'order';
 
@@ -35,6 +35,7 @@ export const FormSidebar: React.FC<FormSidebarProps> = ({
 }) => {
   const workExperiences = watch('workExperiences') ?? [];
   const [expandedExp, setExpandedExp] = useState<Set<number>>(new Set());
+  const [sortDir, setSortDir] = useState<'asc' | 'desc' | null>(null);
 
   const toggleCollapse = (expIdx: number) => {
     setExpandedExp(prev => {
@@ -46,11 +47,13 @@ export const FormSidebar: React.FC<FormSidebarProps> = ({
 
   const moveExp = (expIdx: number, dir: -1 | 1) => {
     setValue('workExperiences', reorder(workExperiences, expIdx, dir) as any);
+    setSortDir(null);
   };
 
   const moveProj = (expIdx: number, projIdx: number, dir: -1 | 1) => {
     const projs = workExperiences[expIdx]?.projects ?? [];
     setValue(`workExperiences.${expIdx}.projects`, reorder(projs, projIdx, dir) as any);
+    setSortDir(null);
   };
 
   const sortAll = (dir: 'asc' | 'desc') => {
@@ -62,6 +65,7 @@ export const FormSidebar: React.FC<FormSidebarProps> = ({
         projects: [...(exp.projects ?? [])].sort((a, b) => cmp(a.startDate || '', b.startDate || '')),
       }));
     setValue('workExperiences', sorted as any);
+    setSortDir(dir);
   };
 
   const scrollTo = (id: string) => {
@@ -105,12 +109,21 @@ export const FormSidebar: React.FC<FormSidebarProps> = ({
           <div className="sidebar-sort-controls">
             <div className="sidebar-sort-row">
               <span className="sidebar-sort-label">開始日で並び替え</span>
-              <button type="button" className="sidebar-sort-btn" onClick={() => sortAll('asc')}>
-                <ArrowUpNarrowWide size={11} /> 昇順
-              </button>
-              <button type="button" className="sidebar-sort-btn" onClick={() => sortAll('desc')}>
-                <ArrowDownNarrowWide size={11} /> 降順
-              </button>
+              <button type="button" className={`sidebar-sort-btn ${sortDir === 'asc' ? 'active' : ''}`} onClick={() => sortAll('asc')}>昇順</button>
+              <button type="button" className={`sidebar-sort-btn ${sortDir === 'desc' ? 'active' : ''}`} onClick={() => sortAll('desc')}>降順</button>
+            </div>
+            <div className="sidebar-sort-row">
+              <span className="sidebar-sort-label">担当工程の並び順</span>
+              <button
+                type="button"
+                className={`sidebar-sort-btn ${watch('processScoreOrder') !== 'score' ? 'active' : ''}`}
+                onClick={() => setValue('processScoreOrder', 'process')}
+              >工程</button>
+              <button
+                type="button"
+                className={`sidebar-sort-btn ${watch('processScoreOrder') === 'score' ? 'active' : ''}`}
+                onClick={() => setValue('processScoreOrder', 'score')}
+              >関与</button>
             </div>
           </div>
           {workExperiences.map((exp, expIdx) => {

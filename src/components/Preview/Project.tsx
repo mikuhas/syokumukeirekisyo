@@ -7,6 +7,7 @@ interface ProjectProps {
   data: ProjectType;
   expIndex: number;
   projectIndex: number;
+  processScoreOrder?: 'process' | 'score';
 }
 
 const PROCESS_LABELS = [
@@ -40,7 +41,7 @@ const formatDate = (dateStr: string | null | undefined) => {
   return `${date.getFullYear()}年${date.getMonth() + 1}月`;
 };
 
-export const Project: React.FC<ProjectProps> = ({ data, expIndex, projectIndex }) => {
+export const Project: React.FC<ProjectProps> = ({ data, expIndex, projectIndex, processScoreOrder }) => {
   const periodDisplay = data.isCurrentlyWorking
     ? `${formatDate(data.startDate)} - 現在`
     : (data.startDate ? `${formatDate(data.startDate)} - ${formatDate(data.endDate)}` : '');
@@ -59,7 +60,13 @@ export const Project: React.FC<ProjectProps> = ({ data, expIndex, projectIndex }
             <td className="project-label-cell">担当工程</td>
             <td className="project-value-cell">
               <div className="process-scores-grid-preview">
-                {[...PROCESS_LABELS].sort((a, b) => (data.processScores?.[b.key] ?? 0) - (data.processScores?.[a.key] ?? 0)).map(({ key, label }) => (
+                {[...PROCESS_LABELS]
+                  .sort((a, b) =>
+                    processScoreOrder === 'score'
+                      ? (data.processScores?.[b.key] ?? 0) - (data.processScores?.[a.key] ?? 0)
+                      : 0
+                  )
+                  .map(({ key, label }) => (
                   <div key={key} className="process-score-item">
                     <span className="process-scores-label">{label}</span>
                     <ProcessBarGraph level={data.processScores?.[key]} />

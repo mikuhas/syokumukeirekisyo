@@ -64,7 +64,7 @@ export const Preview: React.FC<PreviewProps> = ({ data, sectionOrder }) => {
           <section key="work-experience" id="work-experience" className="experiences-container">
             <h2>職務経歴</h2>
             {data.workExperiences.map((exp, idx) => (
-              <WorkExperience key={idx} data={exp} expIndex={idx} />
+              <WorkExperience key={idx} data={exp} expIndex={idx} processScoreOrder={data.processScoreOrder} />
             ))}
           </section>
         );

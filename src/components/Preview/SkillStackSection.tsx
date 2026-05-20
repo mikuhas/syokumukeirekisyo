@@ -5,13 +5,16 @@ import type { HighlightSkill } from '../../schema/resumeSchema';
 const OPTIONAL_CATEGORIES = ['インフラ・クラウド', 'データベース・ミドルウェア', 'その他フレームワーク'];
 
 const SkillBadge: React.FC<{ skill: HighlightSkill; maxYears: number }> = ({ skill, maxYears }) => {
-  const pct = maxYears > 0 ? (skill.years / maxYears) * 100 : 0;
+  const pct = maxYears > 0 ? skill.years / maxYears : 0;
+  const W = 100;
+  const H = 8;
   return (
     <div className="highlight-skill-badge-row">
       <span className="highlight-skill-badge-name">{skill.name}</span>
-      <div className="highlight-skill-badge-bar-wrap">
-        <div className="highlight-skill-badge-bar-fill" style={{ width: `${pct}%` }} />
-      </div>
+      <svg className="highlight-skill-badge-svg" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" shapeRendering="crispEdges">
+        <rect x={0} y={0} width={W} height={H} fill="#e5e7eb" />
+        <rect x={0} y={0} width={pct * W} height={H} fill="#162333" />
+      </svg>
       <span className="highlight-skill-badge-years">{skill.years}年</span>
     </div>
   );

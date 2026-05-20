@@ -63,6 +63,7 @@ export const ProfileSchema = z.object({
 export const ResumeSchema = z.object({
   profile: ProfileSchema,
   workExperiences: z.array(WorkExperienceSchema),
+  processScoreOrder: z.enum(['process', 'score']).optional(),
 });
 
 export type ProcessScores = z.infer<typeof ProcessScoresSchema>;
