@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { WorkExperience } from '../schema/resumeSchema';
 
@@ -44,10 +44,11 @@ export function useGenerateSelfPromotion(workExperiences: WorkExperience[]): Use
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const isLoadingRef = useRef(false);
 
   const generate = useCallback(async (): Promise<string | null> => {
     if (!API_KEY) return null;
-    if (isLoading) return null;
+    if (isLoadingRef.current) return null;
 
     const prompt = buildPrompt(workExperiences);
     if (!prompt) {
@@ -55,6 +56,7 @@ export function useGenerateSelfPromotion(workExperiences: WorkExperience[]): Use
       return null;
     }
 
+    isLoadingRef.current = true;
     setIsLoading(true);
     setError(null);
 
@@ -68,9 +70,10 @@ export function useGenerateSelfPromotion(workExperiences: WorkExperience[]): Use
       setError(e instanceof Error ? e.message : '生成中にエラーが発生しました。');
       return null;
     } finally {
+      isLoadingRef.current = false;
       setIsLoading(false);
     }
-  }, [workExperiences, isLoading]);
+  }, [workExperiences]);
 
   return { isAvailable, generate, isLoading, error };
 }
