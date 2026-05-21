@@ -125,7 +125,18 @@ export const FormEditor: React.FC<FormEditorProps> = ({
           inputType={editModal.inputType}
           onSave={(newValue) => {
             const val = editModal.inputType === 'number' ? (parseFloat(newValue) || 0) : newValue;
-            setValue(editModal.name as any, val, { shouldDirty: true });
+            const skillMatch = editModal.name.match(/^profile\.highlightSkills\.(\d+)\.(.+)$/);
+            if (skillMatch) {
+              const idx = parseInt(skillMatch[1]);
+              const key = skillMatch[2];
+              const current = watch('profile.highlightSkills') ?? [];
+              const updated = current.map((skill, i) =>
+                i === idx ? { ...skill, [key]: val } : skill
+              );
+              setValue('profile.highlightSkills', updated as any, { shouldDirty: true });
+            } else {
+              setValue(editModal.name as any, val, { shouldDirty: true });
+            }
             setEditModal(null);
           }}
           onClose={() => setEditModal(null)}
