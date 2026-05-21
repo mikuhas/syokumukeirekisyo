@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { WorkExperience } from '../schema/resumeSchema';
+
+const API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY as string | undefined;
 
 interface UseGenerateSelfPromotionReturn {
   isAvailable: boolean;
@@ -38,14 +40,14 @@ ${projectSection}`;
 }
 
 export function useGenerateSelfPromotion(workExperiences: WorkExperience[]): UseGenerateSelfPromotionReturn {
-  const apiKey = import.meta.env.VITE_GOOGLE_AI_API_KEY as string | undefined;
-  const isAvailable = Boolean(apiKey);
+  const isAvailable = Boolean(API_KEY);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const generate = async (): Promise<string | null> => {
-    if (!apiKey) return null;
+  const generate = useCallback(async (): Promise<string | null> => {
+    if (!API_KEY) return null;
+    if (isLoading) return null;
 
     const prompt = buildPrompt(workExperiences);
     if (!prompt) {
@@ -57,7 +59,7 @@ export function useGenerateSelfPromotion(workExperiences: WorkExperience[]): Use
     setError(null);
 
     try {
-      const genAI = new GoogleGenerativeAI(apiKey);
+      const genAI = new GoogleGenerativeAI(API_KEY);
       const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
       const result = await model.generateContent(prompt);
       const text = result.response.text();
@@ -68,7 +70,7 @@ export function useGenerateSelfPromotion(workExperiences: WorkExperience[]): Use
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [workExperiences, isLoading]);
 
   return { isAvailable, generate, isLoading, error };
 }
