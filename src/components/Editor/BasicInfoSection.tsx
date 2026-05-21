@@ -94,6 +94,7 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
                       type="number"
                       min={0}
                       step={0.5}
+                      name={`profile.highlightSkills.${i}.years`}
                       className="highlight-skill-years-input"
                       value={field.years}
                       onChange={e => update(i, { ...field, years: parseFloat(e.target.value) || 0 })}

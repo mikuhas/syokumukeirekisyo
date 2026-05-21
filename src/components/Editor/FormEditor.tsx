@@ -124,7 +124,8 @@ export const FormEditor: React.FC<FormEditorProps> = ({
           value={editModal.value}
           inputType={editModal.inputType}
           onSave={(newValue) => {
-            setValue(editModal.name as any, newValue, { shouldDirty: true });
+            const val = editModal.inputType === 'number' ? (parseFloat(newValue) || 0) : newValue;
+            setValue(editModal.name as any, val, { shouldDirty: true });
             setEditModal(null);
           }}
           onClose={() => setEditModal(null)}
