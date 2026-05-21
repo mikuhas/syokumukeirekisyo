@@ -15,7 +15,7 @@ function buildPrompt(workExperiences: WorkExperience[]): string {
   const projectLines = workExperiences.flatMap(exp =>
     exp.projects.map(project => {
       const lines: string[] = [];
-      if (project.details) lines.push(`詳細: ${project.details}`);
+      lines.push(`詳細: ${project.details}`);
       if (project.workContent?.length) lines.push(`作業内容: ${project.workContent.join('、')}`);
       if (project.responsibilities?.length) lines.push(`担当内容: ${project.responsibilities.join('、')}`);
       if (project.assignedTasks) lines.push(`担当タスク: ${project.assignedTasks}`);
@@ -67,7 +67,7 @@ export function useGenerateSelfPromotion(workExperiences: WorkExperience[]): Use
       const text = result.response.text();
       return text;
     } catch (e) {
-      setError(e instanceof Error ? e.message : '生成中にエラーが発生しました。');
+      setError('生成中にエラーが発生しました。再度お試しください。');
       return null;
     } finally {
       isLoadingRef.current = false;
