@@ -32,9 +32,20 @@ function buildPrompt(workExperiences: WorkExperience[]): string {
   const projectSection = projectLines.map((p, i) => `【プロジェクト${i + 1}】\n${p}`).join('\n\n');
 
   return `あなたは採用担当者向けの職務経歴書の自己PR文を作成するエキスパートです。
-以下の職務経歴情報をもとに、400〜600文字の自己PR文を作成してください。
-見出しや箇条書きは使わず、自然な日本語の文章で記述してください。
-出力は自己PR本文のみとし、余分な説明は含めないでください。
+以下の職務経歴情報をもとに、自己PR文を作成してください。
+
+【構成ルール】
+- 全体を「導入・本論・結論」の3段構成にする
+- 段落は合計4つとし、本論を2段落に分ける（導入1段落 → 本論2段落 → 結論1段落）
+- 各段落の間には必ず1行の空行を入れる
+- 見出しや箇条書きは使わず、自然な日本語の文章で記述する
+
+【文字数ルール】
+- 参照できる情報が十分にある場合は400〜600文字を目安にする
+- 参照できる情報が少ない場合は文字数を無理に増やさず、内容に見合った長さにする
+
+【出力ルール】
+- 自己PR本文のみ出力する（前置きや説明は不要）
 
 ${projectSection}`;
 }
@@ -62,7 +73,7 @@ export function useGenerateSelfPromotion(workExperiences: WorkExperience[]): Use
 
     try {
       const genAI = new GoogleGenerativeAI(API_KEY);
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+      const model = genAI.getGenerativeModel({ model: 'gemini-3.1-flash-lite' });
       const result = await model.generateContent(prompt);
       const text = result.response.text();
       return text;
