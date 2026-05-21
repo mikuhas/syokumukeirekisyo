@@ -100,6 +100,8 @@ export const FormEditor: React.FC<FormEditorProps> = ({
           <BasicInfoSection
             register={register}
             control={control}
+            setValue={setValue}
+            workExperiences={watch('workExperiences') ?? []}
             skillOptions={Array.from(new Set(
               (watch('workExperiences') ?? []).flatMap(exp =>
                 exp.projects?.flatMap(p =>
