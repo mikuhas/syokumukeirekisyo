@@ -3,6 +3,7 @@ import type { UseFormRegister, Control, UseFormSetValue } from 'react-hook-form'
 import { useFieldArray } from 'react-hook-form';
 import type { Resume, WorkExperience } from '../../schema/resumeSchema';
 import { User, Plus, Sparkles } from 'lucide-react';
+import { Button } from '../ui/Button';
 import { useGenerateSelfPromotion } from '../../hooks/useGenerateSelfPromotion';
 
 interface BasicInfoSectionProps {
@@ -54,15 +55,15 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
           />
           {isAvailable && (
             <div className="generate-self-promotion">
-              <button
-                type="button"
-                className="generate-self-promotion-btn"
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={handleGenerate}
                 disabled={isLoading}
               >
                 <Sparkles size={14} />
                 {isLoading ? '生成中...' : '自己PRを生成'}
-              </button>
+              </Button>
               {error && <p className="generate-self-promotion-error">{error}</p>}
             </div>
           )}
