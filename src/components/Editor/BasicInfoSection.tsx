@@ -1,17 +1,30 @@
 import React from 'react';
-import type { UseFormRegister, Control } from 'react-hook-form';
+import type { UseFormRegister, Control, UseFormSetValue } from 'react-hook-form';
 import { useFieldArray } from 'react-hook-form';
-import type { Resume } from '../../schema/resumeSchema';
-import { User, Plus } from 'lucide-react';
+import type { Resume, WorkExperience } from '../../schema/resumeSchema';
+import { User, Plus, Sparkles } from 'lucide-react';
+import { useGenerateSelfPromotion } from '../../hooks/useGenerateSelfPromotion';
 
 interface BasicInfoSectionProps {
   register: UseFormRegister<Resume>;
   control: Control<Resume>;
   skillOptions: string[];
+  setValue: UseFormSetValue<Resume>;
+  workExperiences: WorkExperience[];
 }
 
-export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ register, control, skillOptions }) => {
+export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
+  register, control, skillOptions, setValue, workExperiences,
+}) => {
   const { fields, append, remove, update } = useFieldArray({ control, name: 'profile.highlightSkills' });
+  const { isAvailable, generate, isLoading, error } = useGenerateSelfPromotion(workExperiences);
+
+  const handleGenerate = async () => {
+    const result = await generate();
+    if (result) {
+      setValue('profile.selfPromotion', result, { shouldDirty: true });
+    }
+  };
 
   return (
     <section className="form-card">
@@ -39,6 +52,20 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ register, co
             rows={15}
             placeholder="自身のアピールポイントや実績を詳細に入力してください。"
           />
+          {isAvailable && (
+            <div className="generate-self-promotion">
+              <button
+                type="button"
+                className="generate-self-promotion-btn"
+                onClick={handleGenerate}
+                disabled={isLoading}
+              >
+                <Sparkles size={14} />
+                {isLoading ? '生成中...' : '自己PRを生成'}
+              </button>
+              {error && <p className="generate-self-promotion-error">{error}</p>}
+            </div>
+          )}
         </div>
         <div className="form-group">
           <label>ハイライトスキル（最大3つ）</label>
