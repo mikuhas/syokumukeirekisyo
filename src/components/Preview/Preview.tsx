@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import type { Resume } from '../../schema/resumeSchema';
 import type { SectionId } from '../../App';
 import { usePreviewScale } from '../../hooks/usePreviewScale';
@@ -38,7 +38,7 @@ function buildAggregatedSkillStack(data: Resume): Record<string, Set<string>> {
 }
 
 export const Preview: React.FC<PreviewProps> = ({ data, sectionOrder }) => {
-  const aggregatedSkillStack = buildAggregatedSkillStack(data);
+  const aggregatedSkillStack = useMemo(() => buildAggregatedSkillStack(data), [data]);
   const previewScale = usePreviewScale();
 
   const renderSection = (id: SectionId) => {
