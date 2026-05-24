@@ -100,7 +100,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                                 { shouldDirty: true }
                               )}
                             >
-                              {v ?? '―'}
+                              {v ?? '-'}
                             </button>
                           ))}
                         </div>
