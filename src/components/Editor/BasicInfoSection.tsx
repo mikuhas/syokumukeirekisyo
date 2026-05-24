@@ -5,6 +5,7 @@ import type { Resume, WorkExperience } from '../../schema/resumeSchema';
 import { User, Plus, Sparkles } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useGenerateSelfPromotion } from '../../hooks/useGenerateSelfPromotion';
+import { useGenerateSummary } from '../../hooks/useGenerateSummary';
 
 interface BasicInfoSectionProps {
   register: UseFormRegister<Resume>;
@@ -19,6 +20,19 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
 }) => {
   const { fields, append, remove, update } = useFieldArray({ control, name: 'profile.highlightSkills' });
   const { isAvailable, generate, isLoading, error } = useGenerateSelfPromotion(workExperiences);
+  const {
+    isAvailable: isSummaryAvailable,
+    generate: generateSummary,
+    isLoading: isLoadingSummary,
+    error: summaryError,
+  } = useGenerateSummary(workExperiences);
+
+  const handleGenerateSummary = async () => {
+    const result = await generateSummary();
+    if (result) {
+      setValue('profile.summary', result, { shouldDirty: true });
+    }
+  };
 
   const handleGenerate = async () => {
     const result = await generate();
@@ -45,6 +59,20 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
             rows={10}
             placeholder="これまでの経験の概要や強みを簡潔に入力してください。"
           />
+          {isSummaryAvailable && (
+            <div className="generate-self-promotion">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleGenerateSummary}
+                disabled={isLoadingSummary}
+              >
+                <Sparkles size={14} />
+                {isLoadingSummary ? '生成中...' : '職務要約を生成'}
+              </Button>
+              {summaryError && <p className="generate-self-promotion-error">{summaryError}</p>}
+            </div>
+          )}
         </div>
         <div className="form-group">
           <label>自己PR</label>
