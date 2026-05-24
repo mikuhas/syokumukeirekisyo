@@ -75,7 +75,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 <label>担当工程</label>
                 <div className="process-scores-grid">
                   <span className="process-score-header">工程名</span>
-                  <span className="process-score-header">貢献度</span>
+                  <span className="process-score-header">貢献度（1低 〜 5高）</span>
                   {([
                     { key: 'requirements',   label: '要件定義' },
                     { key: 'design',         label: '設計' },
@@ -83,23 +83,30 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     { key: 'backend',        label: 'バックエンド' },
                     { key: 'testing',        label: 'テスト' },
                     { key: 'infrastructure', label: 'インフラ' },
-                  ] as const).map(({ key, label }) => (
-                    <React.Fragment key={key}>
-                      <span className="process-score-label">{label}</span>
-                      <select
-                        {...register(`workExperiences.${nestIndex}.projects.${k}.processScores.${key}`, {
-                          setValueAs: (v) => v === '' ? undefined : Number(v),
-                        })}
-                      >
-                        <option value="">―</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </React.Fragment>
-                  ))}
+                  ] as const).map(({ key, label }) => {
+                    const currentVal = watch(`workExperiences.${nestIndex}.projects.${k}.processScores.${key}`);
+                    return (
+                      <React.Fragment key={key}>
+                        <span className="process-score-label">{label}</span>
+                        <div className="process-score-radio-group">
+                          {([undefined, 1, 2, 3, 4, 5] as const).map((v) => (
+                            <button
+                              key={v ?? 'none'}
+                              type="button"
+                              className={`process-score-chip ${currentVal === v ? 'active' : ''}`}
+                              onClick={() => setValue(
+                                `workExperiences.${nestIndex}.projects.${k}.processScores.${key}`,
+                                v as any,
+                                { shouldDirty: true }
+                              )}
+                            >
+                              {v ?? '―'}
+                            </button>
+                          ))}
+                        </div>
+                      </React.Fragment>
+                    );
+                  })}
                 </div>
               </div>
               <div className="form-group">
