@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useForm, useWatch } from 'react-hook-form';
 import type { Resume } from '../../schema/resumeSchema';
 import type { SectionId } from '../../App';
 import type { Section } from './FormSidebar';
@@ -26,6 +26,20 @@ export const FormEditor: React.FC<FormEditorProps> = ({
   data, onChange, sectionOrder, setSectionOrder, activeSection, setActiveSection,
 }) => {
   const { register, control, watch, setValue, reset } = useForm<Resume>({ defaultValues: data });
+
+  const watchedWorkExperiences = useWatch({ control, name: 'workExperiences' });
+  const skillOptions = useMemo(() =>
+    Array.from(new Set(
+      (watchedWorkExperiences ?? []).flatMap(exp =>
+        exp.projects?.flatMap(p =>
+          Object.values(p.techStack ?? {}).flatMap(items =>
+            items.map(item => item.name).filter(Boolean)
+          )
+        ) ?? []
+      )
+    )),
+    [watchedWorkExperiences]
+  );
 
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 767);
   const [editModal, setEditModal] = useState<EditModalState>(null);
@@ -101,16 +115,8 @@ export const FormEditor: React.FC<FormEditorProps> = ({
             register={register}
             control={control}
             setValue={setValue}
-            workExperiences={watch('workExperiences')}
-            skillOptions={Array.from(new Set(
-              (watch('workExperiences') ?? []).flatMap(exp =>
-                exp.projects?.flatMap(p =>
-                  Object.values(p.techStack ?? {}).flatMap(items =>
-                    items.map(item => item.name).filter(Boolean)
-                  )
-                ) ?? []
-              )
-            ))}
+            workExperiences={watchedWorkExperiences ?? []}
+            skillOptions={skillOptions}
           />
         )}
         {activeSection === 'links' && <LinksSection control={control} register={register} watch={watch} setValue={setValue} />}
