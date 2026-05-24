@@ -88,6 +88,7 @@ export const FormEditor: React.FC<FormEditorProps> = ({
     const input = target as HTMLInputElement | HTMLTextAreaElement;
     const inputType = input.tagName === 'TEXTAREA' ? 'textarea' : ((input as HTMLInputElement).type ?? 'text');
     if (inputType === 'checkbox') return;
+    if (input.getAttribute('name') === 'profile.birthday') return;
     e.preventDefault();
     const formGroup = input.closest('.form-group');
     const labelEl = formGroup?.querySelector('label:not(.checkbox-label-inline)');

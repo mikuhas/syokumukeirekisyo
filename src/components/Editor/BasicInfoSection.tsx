@@ -65,6 +65,7 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
             name="profile.birthday"
             render={({ field }) => (
               <DatePicker
+                name="profile.birthday"
                 locale="ja"
                 dateFormat="yyyy/MM/dd"
                 selected={field.value ? parseISO(field.value) : null}
@@ -74,6 +75,7 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
                 showMonthDropdown
                 dropdownMode="select"
                 maxDate={new Date()}
+                withPortal
               />
             )}
           />
