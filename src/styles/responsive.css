@@ -225,4 +225,14 @@
     zoom: var(--preview-scale, 0.45);
     margin: 0 auto;
   }
+
+  /* 担当工程チップをモバイル向けに小さくして折り返し防止 */
+  .process-scores-grid {
+    grid-template-columns: 5.5rem 1fr;
+  }
+  .process-score-chip {
+    padding: 0.15rem 0.3rem;
+    font-size: 0.75rem;
+    min-width: 1.5rem;
+  }
 }

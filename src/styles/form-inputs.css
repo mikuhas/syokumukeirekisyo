@@ -201,7 +201,7 @@
 .process-score-radio-group {
   display: flex;
   gap: 4px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .process-score-chip {
