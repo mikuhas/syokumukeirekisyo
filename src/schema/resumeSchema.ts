@@ -50,6 +50,7 @@ export const HighlightSkillSchema = z.object({
 
 export const ProfileSchema = z.object({
   name: z.string().min(1, 'Name is required'),
+  birthday: z.string().optional(),
   links: z.array(z.object({
     label: z.string(),
     url: z.string().url(),

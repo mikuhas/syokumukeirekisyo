@@ -53,6 +53,10 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
           <input {...register('profile.name')} placeholder="山田 太郎" />
         </div>
         <div className="form-group">
+          <label>生年月日</label>
+          <input type="date" {...register('profile.birthday')} />
+        </div>
+        <div className="form-group">
           <label>職務要約</label>
           <textarea
             {...register('profile.summary')}
