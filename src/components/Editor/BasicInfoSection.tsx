@@ -1,7 +1,13 @@
 import React from 'react';
 import type { UseFormRegister, Control, UseFormSetValue } from 'react-hook-form';
-import { useFieldArray } from 'react-hook-form';
+import { useFieldArray, Controller } from 'react-hook-form';
 import type { Resume, WorkExperience } from '../../schema/resumeSchema';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import { ja } from 'date-fns/locale/ja';
+import { format, parseISO } from 'date-fns';
+import 'react-datepicker/dist/react-datepicker.css';
+
+registerLocale('ja', ja);
 import { User, Plus, Sparkles } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useGenerateSelfPromotion } from '../../hooks/useGenerateSelfPromotion';
@@ -54,7 +60,23 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
         </div>
         <div className="form-group">
           <label>生年月日</label>
-          <input type="date" {...register('profile.birthday')} />
+          <Controller
+            control={control}
+            name="profile.birthday"
+            render={({ field }) => (
+              <DatePicker
+                locale="ja"
+                dateFormat="yyyy/MM/dd"
+                selected={field.value ? parseISO(field.value) : null}
+                onChange={(date) => field.onChange(date ? format(date, 'yyyy-MM-dd') : '')}
+                placeholderText="例: 1990/01/15"
+                showYearDropdown
+                showMonthDropdown
+                dropdownMode="select"
+                maxDate={new Date()}
+              />
+            )}
+          />
         </div>
         <div className="form-group">
           <label>職務要約</label>
