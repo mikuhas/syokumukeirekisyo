@@ -69,7 +69,7 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
                 locale="ja"
                 dateFormat="yyyy/MM/dd"
                 selected={field.value ? parseISO(field.value) : null}
-                onChange={(date) => field.onChange(date ? format(date, 'yyyy-MM-dd') : '')}
+                onChange={(date: Date | null) => field.onChange(date ? format(date, 'yyyy-MM-dd') : '')}
                 placeholderText="例: 1990/01/15"
                 showYearDropdown
                 showMonthDropdown
