@@ -75,7 +75,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 <label>担当工程</label>
                 <div className="process-scores-grid">
                   <span className="process-score-header">工程名</span>
-                  <span className="process-score-header">貢献度（1低 〜 5高）</span>
+                  <span className="process-score-header">貢献度</span>
                   {([
                     { key: 'requirements',   label: '要件定義' },
                     { key: 'design',         label: '設計' },

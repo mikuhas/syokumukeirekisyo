@@ -183,7 +183,7 @@
 .process-scores-grid {
   display: grid;
   grid-template-columns: 7rem 1fr;
-  gap: 6px 12px;
+  gap: 12px 12px;
   align-items: center;
 }
 
